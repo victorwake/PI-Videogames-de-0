@@ -1,0 +1,95 @@
+
+.container-body{
+    background-color: rgb(0, 0, 0);
+    color: #bbbbbb;
+    height: 100vh;
+    width: 100vw;
+
+}
+
+.container-img{
+    background-color: #000000;
+    /* margin-top: 50px; */
+    /* padding-top: 10px; */
+}
+
+.img{
+    width: 80%;
+    height: 80%;
+}
+
+
+.container-button{
+    background-color: #000000;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    
+}
+
+.button{
+    background-color: #000000;
+    color: #bbbbbb;
+    border: 1px solid #bbbbbb;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    cursor: pointer;
+    transition-duration: 0.5s;
+}
+
+.button:hover{
+    animation: glow 800ms ease-out infinite alternate;
+	background: rgb(26, 24, 24);
+	background: linear-gradient(#333933, #222922);
+	border-color: rgb(153, 51, 51);
+	box-shadow: 0 0 5px rgba(255, 0, 0, 0.2), inset 0 0 5px rgba(255, 0, 0, 0.1), 0 2px 0 #000;
+	color: #efe;
+	outline: none;
+}
+
+#image {
+    filter: grayscale(0%); /* Aplicamos un efecto de escala de grises al inicio */
+    transition: filter 0.5s; /* Hacemos que el efecto se aplique de forma suave durante 0.5 segundos */
+}
+
+@keyframes glow {
+    0% {
+		border-color: rgba(248, 92, 65, 0.384);
+		box-shadow: 0 0 5px rgba(255, 0, 0, 0.2), inset 0 0 5px rgba(117, 1, 1, 0.1), 0 2px 0 #000;
+    }	
+    100% {
+		border-color: rgba(245, 45, 10, 0.322);
+		box-shadow: 0 0 20px rgb(176, 78, 78), inset 0 0 10px rgba(255, 0, 0, 0.4), 0 2px 0 #000;
+    }
+} 
+
+@media screen and (max-width: 768px) {
+    .container-img{
+        padding-top: 200px;
+    }
+    .img{
+        width: 100%;
+        height: 100%;
+    }
+}
+    
+@media  screen and (max-width: 1200px) {
+    .container-img{
+        padding-top: 200px;
+    }
+    .img{
+        width: 70%;
+        height: 100%;
+    }
+}
+
+@media  screen and (min-width: 1800px) {
+    .img{
+        width: 60%;
+        height: 100%;
+    }
+}
+    
+

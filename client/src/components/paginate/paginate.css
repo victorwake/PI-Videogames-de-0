@@ -1,0 +1,92 @@
+/* Modo light end */
+.container-pagination-light {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(224, 224, 224);
+}
+
+.pagination-light {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.nav-container-light {
+    height: 8vh;
+    width: 100vw;
+    transition-duration: 01s;
+    background-color: rgb(224, 224, 224);
+}
+
+.page-iten-light {
+    display: inline;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 3px;
+    transition-duration: 01s;
+    border: 2px solid rgb(15, 15, 15);
+    background-color: rgb(224, 224, 224);
+}
+
+.page-iten-light-active {
+    display: inline;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 3px;
+    transition-duration: 01s;
+    border: 2px solid rgb(15, 15, 15);
+    background-color: rgb(154, 154, 154);
+    box-shadow: -2px -2px 4px rgba(94, 104, 121, 0.486), 2px 2px 4px rgb(255, 255, 255);
+}
+
+/* Modo light fin */
+
+ /* --------------------------------------------------------- */
+
+
+/*Modo Dark*/
+.container-pagination-dark {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    background-color: #333333;
+}
+
+.pagination-dark {
+    display: inline-block;
+    margin-top: 10px;
+    
+}
+
+.nav-container-dark {
+    height: 8vh;
+    width: 100vw;
+    transition-duration: 01s;
+    background-color: #333333;
+}
+
+.page-iten-dark {
+    display: inline;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 3px;
+    transition-duration: 01s;
+    border: 2px solid rgb(15, 15, 15);
+    background-color: rgb(82, 82, 82);
+    
+}
+
+.page-iten-dark-active {
+    display: inline;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 3px;
+    transition-duration: 01s;
+    border: 2px solid rgb(15, 15, 15);
+    background-color: rgb(176, 78, 78);
+    box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.438), 2px 2px 2px rgba(255, 255, 255, 0.104);
+}
+
+/* Modo dark fin */

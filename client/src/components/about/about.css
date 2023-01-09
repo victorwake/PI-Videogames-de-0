@@ -1,0 +1,142 @@
+/* Modo light end */
+
+.conteiner-general-about-light {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 8px;
+    transition-duration: 01s;
+    background-color: rgb(224, 224, 224);
+  }
+  
+  .conteiner-about-light {
+    height: 800px;
+    width: 600px;
+    /* position: fixed; */
+    display: flex;
+    flex-direction: column;
+    padding-top: 70px;
+    margin-bottom: 20px;
+    align-items: center;
+    transition-duration: 01s;
+    background-color: rgb(224, 224, 224);
+    /* border: solid 1px #333333; */
+    border-radius: 10px;
+    box-shadow: -5px -5px 10px rgba(40, 40, 41, 0.486), 5px 3px 8px rgb(255, 255, 255);
+    
+  
+  }
+  
+  .about-image-light {
+    border-radius: 10px;
+    height: 90%;
+    width: 90%;
+    transition-duration: 01s;
+    box-shadow: -5px -5px 10px rgba(40, 40, 41, 0.486), 5px 3px 8px rgb(255, 255, 255);
+  }
+  
+  .about-title-light {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    transition-duration: 01s;
+    color: #333333;
+    text-shadow: -5px -2px 8px rgba(143, 52, 52, 0.596), 5px 3px 8px rgb(255, 255, 255);
+    
+  }
+  
+  .conteiner-span-light {
+    height: 50%;
+    width: 50%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    transition-duration: 01s;
+    color: #333333;
+    text-shadow: -5px -5px 10px rgba(40, 40, 41, 0.192), 5px 3px 8px rgb(255, 255, 255);
+  }
+  
+  .span-light {
+    font-size: 1rem;
+    transition-duration: 01s;
+    color: #333333;
+    text-shadow: -5px -5px 10px rgba(40, 40, 41, 0.205), 5px 3px 8px rgb(255, 255, 255);
+  }
+  
+  /* Modo light fin */
+  
+   /* --------------------------------------------------------- */
+  
+  
+  /*Modo Dark*/
+  .conteiner-general-about-dark {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 8px;
+    transition-duration: 01s;
+    background-color: #333333;
+  }
+  
+  .conteiner-about-dark {
+    height: 800px;
+    width: 600px;
+    /* position: fixed; */
+    display: flex;
+    flex-direction: column;
+    padding-top: 70px;
+    margin-bottom: 20px;
+    align-items: center;
+    transition-duration: 01s;
+    transition-duration: 01s;
+    background-color: #333333;
+    border-radius: 10px;
+    box-shadow: -3px -2px 18px rgb(0, 0, 0), 3px 2px 8px rgba(255, 255, 255, 0.37);
+    
+  
+  }
+  
+  .about-image-dark {
+    border-radius: 10px;
+    height: 90%;
+    width: 90%;
+    transition-duration: 01s;
+    box-shadow: -3px -2px 18px rgb(95, 10, 10), 3px 2px 8px rgba(255, 255, 255, 0.719);
+  }
+  
+  .about-title-dark {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    transition-duration: 01s;
+    color: #ffffff;
+    text-shadow: -3px -2px 18px rgb(206, 27, 27), 3px 2px 8px rgb(255, 255, 255);;
+    
+  }
+  
+  .conteiner-span-dark {
+    height: 50%;
+    width: 50%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    transition-duration: 01s;
+    color: #ffffff;
+    text-shadow: -3px -2px 18px rgba(206, 27, 27, 0.493), 3px 2px 8px rgba(255, 255, 255, 0.301);;
+  }
+  
+  .span-dark {
+    font-size: 1rem;
+    transition-duration: 01s;
+    color: #ffffff;
+    text-shadow: -3px -2px 18px rgba(206, 27, 27, 0.493), 3px 2px 8px rgba(255, 255, 255, 0.301);;
+  }
+  
+  /* Modo dark fin */
+
+  .conteiner-footer-about {
+    display: block;
+    flex-direction: wrap;
+    justify-content: center;
+    align-items: center;
+  }

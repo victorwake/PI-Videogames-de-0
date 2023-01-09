@@ -1,0 +1,205 @@
+
+/* Modo light end */
+
+.conteiner-general-light{
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    transition-duration: 01s;
+    background-color: rgb(224, 224, 224);
+    color: #333333;
+}
+
+.ul-light{
+    display: flex;
+    justify-content: space-between;
+}
+
+.li-light{
+    margin: 15px;
+    text-transform: uppercase;
+}
+
+.li-light:hover{
+    border-bottom-width: thin;
+    border-bottom: 4px solid rgb(176, 78, 78);
+}
+
+.conteiner-ul-light{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.conteiner-switch-light{
+    padding-top: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition-duration: 01s;
+    background-color: rgb(224, 224, 224);
+    margin-right: 30px;
+}
+
+.h4-light{
+    transition-duration: 01s;
+    color: #333333;
+    margin-top: 8px;
+    margin-bottom: 5px;
+}
+
+.checkbox-light{
+    border: none;
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 80px;
+    height: 20px;
+    background: rgb(26, 24, 24);
+    display: block;
+    border-radius: 100px;
+    position: relative;
+    transition-duration: 01s;
+    background-color: rgb(224, 224, 224);
+    color: rgb(2, 2, 2);
+    box-shadow: -5px -5px 10px rgba(94, 104, 121, 0.486), 5px 3px 8px rgb(255, 255, 255);
+}
+
+#label-light:after {
+    transition-duration: 01s;
+    background-color: rgb(224, 224, 224);
+    box-shadow: -5px -5px 8px rgba(94, 104, 121, 0.685), 5px 3px 5px rgb(255, 255, 255);
+}
+
+
+/* Modo light fin */
+
+ /* --------------------------------------------------------- */
+
+/*Modo Dark*/
+
+.conteiner-general-dark{
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    transition-duration: 01s;
+    background-color: #333333;
+    color: #fff;
+}
+
+.ul-dark{
+    display: flex;
+    justify-content: space-between;
+}
+
+.li-dark{
+    margin: 15px;
+    text-transform: uppercase;
+}
+
+.li-dark:hover{
+    border-bottom-width: thin;
+    border-bottom: 4px solid rgb(176, 78, 78);
+}
+
+.conteiner-ul-dark{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.conteiner-switch-dark{
+    padding-top: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition-duration: 01s;
+    background-color: #333333;
+    color: #fff;
+    margin-right: 30px;
+}
+
+.h4-dark{
+    margin-top: 8px;
+    margin-bottom: 5px;
+    transition-duration: 01s;
+    color: rgb(224, 224, 224);
+}
+
+.checkbox-dark{
+    border: none;
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 80px;
+    height: 20px;
+    background: rgb(26, 24, 24);
+    display: block;
+    border-radius: 100px;
+    position: relative;
+    transition-duration: 01s;
+    background-color: #333333;
+    color: #fff;
+    box-shadow: -3px -2px 8px rgb(0, 0, 0), 3px 2px 8px rgba(255, 255, 255, 0.267);
+}
+
+#label-dark:after {
+    transition-duration: 01s;
+    background-color: #333333;
+    box-shadow: -3px -2px 5px rgb(0, 0, 0), 3px 2px 3px rgba(255, 255, 255, 0.212);
+}  
+/* Modo dark fin */
+
+/* --------------------------------------------------------- */
+/* li Link, li Link:active, Link:visited, Link:hover, Link:focus, Link:link {
+    text-decoration: none;
+    color: rgb(81, 255, 0);
+}
+     */
+
+li {
+    list-style: none;
+    cursor: pointer;
+    border-bottom: 4px solid transparent;
+}
+input[type=checkbox] {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+
+/* label {
+    /* cursor: pointer;
+    text-indent: -9999px;
+    width: 80px;
+    height: 20px;
+    background: rgb(26, 24, 24);
+    display: block;
+    border-radius: 100px;
+    position: relative; 
+} */
+
+label:after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 5px;
+    width: 16px;
+    height: 16px;
+    /* background: #fff; */
+    border-radius: 90px;
+    transition: 0.5s;
+}
+
+input:checked + label {
+    background: rgb(224, 224, 224);  
+}
+
+input:checked + label:after {
+    left: calc(100% - 5px);
+    transform: translateX(-100%);
+}
+
+label:active:after {
+    width: 130px;
+}

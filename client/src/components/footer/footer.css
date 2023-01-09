@@ -1,0 +1,58 @@
+/* Modo light end */
+.conteiner-general-footer-light {
+    padding: 20px 0;
+    font-family: 'Roboto', sans-serif;
+    transition-duration: 01s;
+    background-color: rgb(224, 224, 224);
+    color: #333333;
+}
+
+.conteiner-footer-light {
+    display: flex;
+    justify-content: center;
+}
+
+/* .footer-image-light {
+
+}
+
+.conteiner-span-light {
+
+} */
+
+
+/* Modo light fin */
+
+ /* --------------------------------------------------------- */
+
+
+/*Modo Dark*/
+
+
+.conteiner-general-footer-dark {
+    padding: 20px 0;
+    font-family: 'Roboto', sans-serif;
+    transition-duration: 01s;
+    background-color: #333333;
+    color: rgb(255, 255, 255);
+
+}
+
+.conteiner-footer-dark {
+    display: flex;
+    justify-content: center;
+
+    
+}
+
+/* .footer-image-dark {
+
+
+}
+
+.conteiner-span-dark {
+    
+
+} */
+
+/* Modo dark fin */

@@ -1,0 +1,133 @@
+/* Modo light end */
+
+.home-container-light{
+    height: 100vh;
+    padding-top: 8px;
+    transition-duration: 01s;
+    background-color: rgb(224, 224, 224);
+}
+
+.container-light{
+    height: 100vh;
+    padding-top: 20px;
+    transition-duration: 01s;
+    background-color: rgb(224, 224, 224);
+    color: #333333;
+}
+
+.card-container-light{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 230px);
+}
+
+.pagination-container-light{
+    transition-duration: 01s;
+    background-color: rgb(224, 224, 224);
+}
+
+.pagination-container-botoon-light{
+    padding-top: 30px;
+    transition-duration: 01s;
+    background-color: rgb(224, 224, 224);
+}
+
+.filter-container-light{
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+    transition-duration: 01s;
+    background-color: rgb(224, 224, 224);
+}
+
+/* Modo light fin */
+
+ /* --------------------------------------------------------- */
+
+
+/*Modo Dark*/
+
+.home-container-dark{
+    height: 100vh;
+    padding-top: 8px;
+    transition-duration: 01s;
+    background-color: #333333;
+    
+}
+
+.container-dark{
+    height: 100vh;
+    padding-top: 20px;
+    transition-duration: 01s;
+    background-color: #333333;
+    color: rgb(255, 255, 255);
+}
+
+.card-container-dark{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 230px);
+    }
+    
+.card-dark{
+    width: 300px;
+    height: 350px;
+    background-color: #333333;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+    transition: all 0.5s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-light{
+    width: 300px;
+    height: 350px;
+    background-color: rgb(224, 224, 224);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+    transition: all 0.5s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+    
+.pagination-container-dark{
+    transition-duration: 01s;
+    background-color: #333333;
+}
+    
+.pagination-container-botoon-dark{
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+    transition-duration: 01s;
+    background-color: #333333;
+}
+
+.filter-container-dark{
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+    transition-duration: 01s;
+    background-color: #333333;
+}
+
+/* Modo dark fin */
+
+
+h1{
+    font-size: 50px;
+    padding-top: 100px;
+    
+}
+
+link {
+    text-decoration: none;
+    
+}
+
+

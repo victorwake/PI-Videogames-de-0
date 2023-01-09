@@ -25,7 +25,7 @@ const postGame = async (req, res) => {
                 }
             })
             newGame.addGenres(genresDb)
-            res.status(200).send('The game was created successfully')
+            res.status(200).send(newGame, 'The game was created successfully')
         } catch (error)  {
             if (error.name === 'SequelizeUniqueConstraintError') {
                 res.status(400).send('The name of the game already exists');

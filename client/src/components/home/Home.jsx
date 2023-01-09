@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { Card } from '../card/Card.jsx';
 import { Paginate } from '../paginate/Paginate.jsx';
 import { Footer } from '../footer/Footer';
+import { SearchBar } from '../searchBar/SearchBar';
 
 
 
@@ -94,6 +95,9 @@ export const Home = () => {
                     <option value= '' disabled>Platforms</option>
                     <option value='All'>All Platforms</option>
                 </select>
+            </div>
+            <div>
+                <SearchBar />
             </div>
 
                 <div className={"pagination-container-" + clase} >

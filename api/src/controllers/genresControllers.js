@@ -5,24 +5,35 @@ const { Genre } = require('../db');
 
 
 
-
-
 /*Me traigo los generos de la API y los guardo en la DB*/
-const genres = async (req,res) => {
+const getApiGenres = async (req, res, next) => { 
     try {
-        const genresApi = await axios(`${URL_API}/genres?key=${API_KEY}`)
-        const genres = genresApi.data.results.map(el => el.name);
-            genres.forEach(el => {
-                Genre.findOrCreate({//me creo en la db los generos que no existen
-                    where: {name: el}
-                });
-            });
-            const genresDb = await Genre.findAll();
-            res.status(200).send(genresDb);
-    }catch (error) {
-        res.status(404).send(error, 'No genres found');
-    }
+        const genresApi = (await axios(`${URL_API}/genres?key=${API_KEY}`))
+        .data.results.map(e => {
+            return {
+                id: e.id,
+                name: e.name
+            }
+        });
+    await Genre.bulkCreate(genresApi, { ignoreDuplicates: true });
+    console.log('genres loaded in the db'); 
+    } catch (err) {
+        next(err)
+    }     
 };
+
+const getDbGenres = async (req, res, next) => {
+    try {
+        const genresDb = await Genre.findAll()
+        res.send(genresDb)
+    } catch (err) {
+        next(err)
+    }
+}
+
 /*Fin de traer los generos de la API y los guardo en la DB*/
 
-module.exports = { genres }
+module.exports = {
+    getApiGenres,
+    getDbGenres,
+}

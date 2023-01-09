@@ -35,7 +35,7 @@ export function Nav() {
         <div className={'conteiner-ul-' + clase}>
                                 <ul className={'ul-' + clase}> 
                                     <li className={'li-' + clase}><Link style={{ color: 'inherit', textDecoration: 'inherit'}} to= '/home' className='link'
-                                    // onClick={e => {handleClick(e)}}
+                                    
                                     >Home</Link></li>
                                     <li className={'li-' + clase}><Link style={{ color: 'inherit', textDecoration: 'inherit'}} to= '/create' className='link'>Create</Link></li>
                                     <li className={'li-' + clase}><Link style={{ color: 'inherit', textDecoration: 'inherit'}} to= '/about' className='link'>About</Link></li>

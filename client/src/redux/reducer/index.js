@@ -1,17 +1,20 @@
-
+import { nameASC } from '../../helpers/sort.js';
 import {
     THEME_CHANGE, 
     THEME_LIGHT, 
     THEME_DARK,
     GET_GAMES,
     FILTER_GAMES_BY_GENRE,
-    ORDER_BY_AZ
+    ORDER_BY_AZ,
+    GET_GAME_NAME,
+    GET_GENRES,
         } from '../action/index.js';
 
 const initialState = {
     theme: 'dark',
     games: [],
     allGames: [],
+    genres: [],
 };
 
 function rootReducer(state = initialState, action){
@@ -31,6 +34,7 @@ function rootReducer(state = initialState, action){
                 ...state,
                 theme: 'dark'
             };
+
         /* Traigo todos los juegos */    
         case GET_GAMES:    
             return {
@@ -38,6 +42,8 @@ function rootReducer(state = initialState, action){
                 games: action.payload,
                 allGames: action.payload,
             };
+
+        /* Filtrar por genero */
         case FILTER_GAMES_BY_GENRE:   
             const allGames = state.games;
             const genreFilter = action.payload === 'All'
@@ -47,6 +53,8 @@ function rootReducer(state = initialState, action){
                 ...state,
                 games: genreFilter
             };
+
+        /* Ordenar por nombre */
             case ORDER_BY_AZ:
                 const videogames3 = [...state.games];
                 const orderAZ =
@@ -62,8 +70,21 @@ function rootReducer(state = initialState, action){
                 return {
                     ...state,
                     games: orderAZ,
-                };    
+                };  
             
+        /* Buscar por nombre */
+        case GET_GAME_NAME:
+            return {
+                ...state,
+                games: action.payload,
+            };
+
+        /* Traigo todos los generos */
+        case GET_GENRES:
+            return {
+                ...state,
+                genres: action.payload.sort(nameASC)
+            }
         default:
             return state;
         }

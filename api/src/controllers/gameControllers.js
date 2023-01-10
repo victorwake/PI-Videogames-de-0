@@ -25,14 +25,14 @@ const postGame = async (req, res) => {
                 }
             })
             newGame.addGenres(genresDb)
-            res.status(200).send(newGame, 'The game was created successfully')
+            res.status(200).send('The game was created successfully')
         } catch (error)  {
-            if (error.name === 'SequelizeUniqueConstraintError') {
-                res.status(400).send('The name of the game already exists');
-        }   if (error.name === 'SequelizeValidationError') {
-                res.status(400).send('The score must be between 1 to 5');
-        }   else{
-                res.status(400).send('Error in the server');
+                if (error.name === 'SequelizeUniqueConstraintError') {
+                    res.status(400).send('The name of the game already exists');
+            }   if (error.name === 'SequelizeValidationError') {
+                    res.status(400).send('The score must be between 1 to 5');
+            }   else{
+                    res.status(400).send('Error in the server');
         }
     }
 };
@@ -62,7 +62,7 @@ const getGameById = async (req, res) => {
                     rating: apiDb.rating,
                     platforms: apiDb.platforms.map((platform) => platform.name),
                     genres: apiDb.genres.map((genre) => genre.name),
-                    image: apiDb.img,
+                    img: apiDb.img,
                 };
                 res.status(200).send(game);
             } else {
@@ -82,7 +82,7 @@ const getGameById = async (req, res) => {
                 rating: api.data.rating,
                 platforms: api.data.platforms.map((platform) => platform.platform.name),
                 genres: api.data.genres.map((genre) => genre.name),
-                image: api.data.background_image,
+                img: api.data.background_image,
             };
             res.status(200).send(game);
         } catch (error) {

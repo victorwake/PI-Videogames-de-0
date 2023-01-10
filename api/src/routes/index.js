@@ -4,12 +4,14 @@ require("dotenv").config();
 const  gamesRoutes = require('./gamesRoutes.js');
 const  gameRoutes= require('./gameRoutes.js');
 const  genresRoutes = require('./genresRoutes.js');
+const  platformsRoutes = require('./platformsRoutes.js');
 
 
 
 router.use('/games', gamesRoutes);
 router.use('/game', gameRoutes)
 router.use('/genres', genresRoutes);
+router.use('/platforms', platformsRoutes );
 
 
 

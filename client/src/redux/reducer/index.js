@@ -5,9 +5,14 @@ import {
     THEME_DARK,
     GET_GAMES,
     FILTER_GAMES_BY_GENRE,
+    FILTER_GAMES_BY_PLATFORM,
     ORDER_BY_AZ,
     GET_GAME_NAME,
     GET_GENRES,
+    POST_GAME,
+    GET_PLATFORMS,
+    GET_GAME_BY_ID,
+    CLEAN_DETAILS
         } from '../action/index.js';
 
 const initialState = {
@@ -15,6 +20,8 @@ const initialState = {
     games: [],
     allGames: [],
     genres: [],
+    platforms: [],
+    details: [],
 };
 
 function rootReducer(state = initialState, action){
@@ -45,7 +52,7 @@ function rootReducer(state = initialState, action){
 
         /* Filtrar por genero */
         case FILTER_GAMES_BY_GENRE:   
-            const allGames = state.games;
+            const allGames = state.allGames;
             const genreFilter = action.payload === 'All'
                 ? allGames 
                 : allGames.filter((g) => g.genres.includes(action.payload));
@@ -54,17 +61,28 @@ function rootReducer(state = initialState, action){
                 games: genreFilter
             };
 
+        /* Filtrar por plataforma */
+        case FILTER_GAMES_BY_PLATFORM:
+            const allGames2 = state.allGames;   
+            const platformFilter = action.payload === 'All'
+                ? allGames2
+                : allGames2.filter((g) => g.platforms.includes(action.payload));
+            return {
+                ...state,
+                games: platformFilter
+            };
+
         /* Ordenar por nombre */
             case ORDER_BY_AZ:
-                const videogames3 = [...state.games];
+                const videogames = [...state.games];
                 const orderAZ =
                 action.payload === 'All'
-                    ? videogames3
+                    ? videogames
                     : action.payload === 'asc'
-                    ? videogames3.sort((a, b) =>
+                    ? videogames.sort((a, b) =>
                         a.name.toUpperCase() > b.name.toUpperCase() ? 1 : -1
                     )
-                    : videogames3.sort((a, b) =>
+                    : videogames.sort((a, b) =>
                         a.name.toUpperCase() > b.name.toUpperCase() ? -1 : 1
                     );
                 return {
@@ -85,6 +103,31 @@ function rootReducer(state = initialState, action){
                 ...state,
                 genres: action.payload.sort(nameASC)
             }
+
+        case POST_GAME:
+            return {
+                ...state,
+            }
+
+        case GET_PLATFORMS:
+            return {
+                ...state,
+                platforms: action.payload.sort(nameASC)
+            }    
+        
+        case GET_GAME_BY_ID:
+            return {
+                ...state,
+                details: action.payload
+            }
+
+            /* Limpio el details */
+        case CLEAN_DETAILS:
+            return {
+                ...state,
+                details: action.payload
+            }
+
         default:
             return state;
         }

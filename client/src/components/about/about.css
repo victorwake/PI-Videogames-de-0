@@ -1,12 +1,18 @@
 /* Modo light end */
 
 .conteiner-general-about-light {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     padding-top: 8px;
     transition-duration: 01s;
     background-color: rgb(224, 224, 224);
+  }
+
+  .conteiner-general-center-light{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 60px;
+    /* transition-duration: 01s;
+    background-color: #333333; */
   }
   
   .conteiner-about-light {
@@ -70,12 +76,21 @@
   
   /*Modo Dark*/
   .conteiner-general-about-dark {
-    display: flex;
+    /* display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; */
     padding-top: 8px;
     transition-duration: 01s;
     background-color: #333333;
+  }
+
+  .conteiner-general-center-dark {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 60px;
+    /* transition-duration: 01s;
+    background-color: #333333; */
   }
   
   .conteiner-about-dark {
@@ -137,6 +152,17 @@
   .conteiner-footer-about {
     display: block;
     flex-direction: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  .footer-about{
+    /* position: fixed; */
+    bottom: 15px;
+    width: 100%;
+    /* height: 50px; */
+    display: block;
     justify-content: center;
     align-items: center;
   }

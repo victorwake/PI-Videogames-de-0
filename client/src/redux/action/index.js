@@ -65,6 +65,18 @@ export const FILTER_GAMES_BY_GENRE = 'FILTER_GAMES_BY_GENRE';
 
 /*----------------------------------------------*/
 
+export function filterGamesByPlatform(payload) {
+    return {
+        type: FILTER_GAMES_BY_PLATFORM,
+        payload
+    };
+}
+
+export const FILTER_GAMES_BY_PLATFORM = 'FILTER_GAMES_BY_PLATFORM';
+
+/*----------------------------------------------*/
+
+
 export function orderVideogamesByAZ(payload) {
     return {
         type: ORDER_BY_AZ,
@@ -108,3 +120,53 @@ export function getGenres() {
 export const GET_GENRES = 'GET_GENRES';
 
 /*----------------------------------------------*/
+
+export function postGame(payload) {
+    return async function (dispatch) {
+        const json = await axios.post('http://localhost:3001/game', payload);
+        return json;
+    };
+}
+
+export const POST_GAME = 'POST_GAME';
+
+/*----------------------------------------------*/
+
+export function getPlatforms() {
+    return async function (dispatch) {
+        const json = await axios.get('http://localhost:3001/platforms');
+        return dispatch({
+            type: GET_PLATFORMS,
+            payload: json.data
+        });
+    };
+}
+
+export const GET_PLATFORMS = 'GET_PLATFORMS';
+
+/*----------------------------------------------*/
+
+export function getGameById(id) {
+    return async function (dispatch) {
+        try{
+            const json = await axios.get(`http://localhost:3001/game/${id}`);
+                return dispatch({
+                    type: GET_GAME_BY_ID,
+                    payload: json.data
+                });
+        }
+        catch(error){console.log(error)}
+    }
+}
+
+export function cleanDetails(payload) {
+    return {
+        type: CLEAN_DETAILS,
+        payload
+    };
+}
+export const CLEAN_DETAILS = 'CLEAN_DETAILS';
+
+/*----------------------------------------------*/
+
+export const GET_GAME_BY_ID = 'GET_GAME_BY_ID';

@@ -1,13 +1,14 @@
-// import './home.css'
 import './home.css'
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getGames, filterGamesByGenre, orderVideogamesByAZ } from '../../redux/action/index.js';
+import { getGames,getGenres, filterGamesByGenre, orderVideogamesByAZ, filterGamesByPlatform, getPlatforms } from '../../redux/action/';
 import { Link } from 'react-router-dom';
 import { Card } from '../card/Card.jsx';
 import { Paginate } from '../paginate/Paginate.jsx';
 import { Footer } from '../footer/Footer';
 import { SearchBar } from '../searchBar/SearchBar';
+import { Nav } from '../nav/Nav';
+
 
 
 
@@ -16,6 +17,8 @@ export const Home = () => {
     const dispatch = useDispatch();
     const allGames = useSelector(state => state.games);
     const clase = useSelector(state => state.theme)
+    const genres = useSelector(state => state.genres);
+    const platforms = useSelector(state => state.platforms);
 
     //Paginado de 15 en 15
     const [currentPage, setCurrentPage] = useState(1); // pagina actual
@@ -31,14 +34,18 @@ export const Home = () => {
 
 
     useEffect(() => {
-        dispatch(getGames());
+        if(!allGames.length) dispatch(getGames());
+        if(!genres.length) dispatch(getGenres())
+        if(!platforms.length) dispatch(getPlatforms());
+
     }, [dispatch]);
 
     function handleFilterGenre(e) {
         dispatch(filterGamesByGenre(e.target.value));
-        if(e.target.value === 'All') {
-            dispatch(getGames());
-        }
+    }
+
+    function handleFilterPlatform(e) {
+        dispatch(filterGamesByPlatform(e.target.value));
     }
 
     function handleOrderAZ(e) {
@@ -52,6 +59,7 @@ export const Home = () => {
 
     return (
         <div className={"home-container-" + clase}>
+            <Nav /> 
             <div className={"filter-container-" + clase}>
                 {/* <h5>Order by:</h5> */}
                 <select onChange={(e) => {handleOrderAZ(e);}} >
@@ -66,9 +74,19 @@ export const Home = () => {
                     <option value= 'created'>Created</option>
                     <option value= 'existing'>Existing</option>
                 </select>
+
+                <select onChange={e => handleFilterGenre(e)} >
+                    <option value= '' disabled >Genre</option>
+                    <option value='All'>All Genres</option>
+                    {
+                        genres?.map(g => (
+                            <option key= {g.id} value={g.name}>{g.name}</option>
+                        ))
+                    }
+                </select>
                 
                 <select onChange={e => handleFilterGenre(e)} >
-                    <option value= '' disabled>Genre</option>
+                    {/* <option value= '' disabled>Genre</option>
                     <option value='All'>All Genres</option>
                     <option value= 'Action'>Action</option>
                     <option value= 'Indie'>Indie</option>
@@ -88,7 +106,7 @@ export const Home = () => {
                     <option value= 'Family'>Family</option>
                     <option value= 'Board Games'>Board Games</option>
                     <option value= 'Educational'>Educational</option>
-                    <option value= 'Card'>Card</option>
+                    <option value= 'Card'>Card</option> */}
                 </select>
 
                 <select >

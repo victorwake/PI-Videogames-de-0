@@ -1,7 +1,7 @@
 import './nav.css';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { getGames, themeChange } from '../../redux/action/';
+import { themeChange } from '../../redux/action/';
 
 
 
@@ -24,23 +24,24 @@ export function Nav() {
         stringTheme = "It's a dark theme!";
     }
 
-    function handleClick(e) {
-        e.preventDefault();
-        dispatch(getGames());
-    }
-
     return (
 
         <div className={'conteiner-general-' + clase}> 
-        <div className={'conteiner-ul-' + clase}>
-                                <ul className={'ul-' + clase}> 
-                                    <li className={'li-' + clase}><Link style={{ color: 'inherit', textDecoration: 'inherit'}} to= '/home' className='link'
-                                    
-                                    >Home</Link></li>
-                                    <li className={'li-' + clase}><Link style={{ color: 'inherit', textDecoration: 'inherit'}} to= '/create' className='link'>Create</Link></li>
-                                    <li className={'li-' + clase}><Link style={{ color: 'inherit', textDecoration: 'inherit'}} to= '/about' className='link'>About</Link></li>
-                                </ul>
-                </div>
+            <div className={'conteiner-ul-' + clase}>
+                <ul className={'ul-' + clase}> 
+                    <li className={'li-' + clase}><Link style={{ color: 'inherit', textDecoration: 'inherit'}} 
+                        to= '/home' className='link'>Home</Link>
+                    </li>
+
+                    <li className={'li-' + clase}><Link style={{ color: 'inherit', textDecoration: 'inherit'}} 
+                        to= '/create' className='link'>Create</Link>
+                    </li>
+
+                    <li className={'li-' + clase}><Link style={{ color: 'inherit', textDecoration: 'inherit'}} 
+                        to= '/about' className='link'>About</Link>
+                    </li>
+                </ul>
+            </div>
                 <div className={'conteiner-switch-' + clase}>   
                         <input type='checkbox' 
                         id='switch' 

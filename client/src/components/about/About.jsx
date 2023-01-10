@@ -1,16 +1,17 @@
 import './about.css';
 import { useSelector } from "react-redux";
 import { Footer } from '../footer/Footer';
-import { Fragment } from 'react';
+import { Nav } from '../nav/Nav';
 
 
 export const About = () => {
     const clase= useSelector(store => store.theme);
 
     return (
-        
+        <div>
         <div className={'conteiner-general-about-' + clase}>
-        <div >
+            <Nav />
+        <div className={'conteiner-general-center-' + clase} >
         <div className={'conteiner-about-' + clase}>
             <div className={'about-title-' + clase}>
                     <h2>About this App</h2>
@@ -45,10 +46,10 @@ export const About = () => {
                 
 
         </div>  
-                <div className='conteiner-footer-about'>
+                <div className="footer-about">
                     <Footer />
                 </div>
-        
+        </div>
         </div>
 
     )

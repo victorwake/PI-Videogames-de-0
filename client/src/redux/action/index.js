@@ -159,6 +159,8 @@ export function getGameById(id) {
     }
 }
 
+export const GET_GAME_BY_ID = 'GET_GAME_BY_ID';
+
 export function cleanDetails(payload) {
     return {
         type: CLEAN_DETAILS,
@@ -169,4 +171,11 @@ export const CLEAN_DETAILS = 'CLEAN_DETAILS';
 
 /*----------------------------------------------*/
 
-export const GET_GAME_BY_ID = 'GET_GAME_BY_ID';
+export function filterGameApiOrDb(payload) {
+    return {
+        type: FILTER_GAME_API_OR_DB,
+        payload
+    };
+}
+
+export const FILTER_GAME_API_OR_DB = 'FILTER_GAME_API_OR_DB';

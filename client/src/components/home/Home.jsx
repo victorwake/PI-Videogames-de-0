@@ -1,7 +1,13 @@
 import './home.css'
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getGames,getGenres, filterGamesByGenre, orderVideogamesByAZ, filterGamesByPlatform, getPlatforms } from '../../redux/action/';
+import { getGames,getGenres, 
+        filterGamesByGenre, 
+        orderVideogamesByAZ, 
+        filterGamesByPlatform, 
+        getPlatforms, 
+        filterGameApiOrDb 
+        } from '../../redux/action/';
 import { Link } from 'react-router-dom';
 import { Card } from '../card/Card.jsx';
 import { Paginate } from '../paginate/Paginate.jsx';
@@ -40,6 +46,10 @@ export const Home = () => {
 
     }, [dispatch]);
 
+    function handleFilterApiOrDb(e) {
+        dispatch(filterGameApiOrDb(e.target.value));
+    }
+
     function handleFilterGenre(e) {
         dispatch(filterGamesByGenre(e.target.value));
     }
@@ -69,7 +79,7 @@ export const Home = () => {
                     <option value="desc">Z - A</option>
                 </select>
 
-                <select >
+                <select onChange={(e) => {handleFilterApiOrDb(e);}} >
                     <option value= 'All'>All Types</option>
                     <option value= 'created'>Created</option>
                     <option value= 'existing'>Existing</option>
@@ -85,7 +95,7 @@ export const Home = () => {
                     }
                 </select>
                 
-                <select onChange={e => handleFilterGenre(e)} >
+                {/* <select onChange={e => handleFilterGenre(e)} > */}
                     {/* <option value= '' disabled>Genre</option>
                     <option value='All'>All Genres</option>
                     <option value= 'Action'>Action</option>
@@ -107,11 +117,17 @@ export const Home = () => {
                     <option value= 'Board Games'>Board Games</option>
                     <option value= 'Educational'>Educational</option>
                     <option value= 'Card'>Card</option> */}
-                </select>
+                {/* </select> */}
 
-                <select >
+
+                <select onChange={e => handleFilterPlatform(e)} >
                     <option value= '' disabled>Platforms</option>
                     <option value='All'>All Platforms</option>
+                    {
+                        platforms?.map(p => (
+                            <option key= {p.id} value={p.name}>{p.name}</option>
+                        ))
+                    }
                 </select>
             </div>
             <div>

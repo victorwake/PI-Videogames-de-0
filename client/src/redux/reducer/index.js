@@ -12,7 +12,9 @@ import {
     POST_GAME,
     GET_PLATFORMS,
     GET_GAME_BY_ID,
-    CLEAN_DETAILS
+    CLEAN_DETAILS,
+    FILTER_GAME_API_OR_DB
+
         } from '../action/index.js';
 
 const initialState = {
@@ -128,9 +130,19 @@ function rootReducer(state = initialState, action){
                 details: action.payload
             }
 
+        case FILTER_GAME_API_OR_DB:
+            const gamesStatus = state.allGames;
+            const filterStatus = action.payload === 'All'
+                ? gamesStatus
+                :action.payload === 'created'
+                ? gamesStatus.filter((g) => g.createdInDb === true)
+                : gamesStatus.filter((g) => !g.createdInDb);
+            return {
+                ...state,
+                games: filterStatus
+            };
         default:
             return state;
-        }
+    }
 }
-
 export default rootReducer;

@@ -1,131 +1,175 @@
-import './create.css';
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { postGame, getPlatforms, getGenres } from '../../redux/action';
-import { Footer } from '../footer/Footer';
-import { Nav } from '../nav/Nav';
-import { Loader } from '../loader/Loader';
-
+import "./create.css";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { postGame, getPlatforms, getGenres } from "../../redux/action";
+import { Footer } from "../footer/Footer";
+import { Nav } from "../nav/Nav";
+import { useNavigate } from 'react-router-dom';
 
 export const CreateGame = () => {
-    const dispatch = useDispatch();
-    const clase= useSelector(store => store.theme);
-    const platforms = useSelector(state => state.platforms);
-    const genres = useSelector(state => state.genres);
+  const dispatch = useDispatch();
+  const clase = useSelector((store) => store.theme);
+  const platforms = useSelector((state) => state.platforms);
+  const genres = useSelector((state) => state.genres);
+  const navigate = useNavigate(); // es el remplazo de useHistory en react 6
 
-    const [input, setInput] = useState({
-        name: '',
-        img: '',
-        released: '',
-        rating: '',
-        platforms: [],
-        genres: [],
-        description: '',
+  const [input, setInput] = useState({
+    name: "",
+    img: "",
+    released: "",
+    rating: "",
+    platforms: [],
+    genres: [],
+    description: "",
+  });
+
+  useEffect(() => {
+    if (!platforms.length) dispatch(getPlatforms());
+    if (!genres.length) dispatch(getGenres());
+  }, [dispatch]);
+
+  const handleChange = (e) => {
+    setInput({
+      ...input,
+      [e.target.name]: e.target.value,
     });
+  };
 
-    useEffect(() => {
-        if(!platforms.length) dispatch(getPlatforms());
-        if (!genres.length) dispatch(getGenres());
-    }, [dispatch]);
+  const handleSelectGenre = (e) => {
+    setInput({
+      ...input,
+      genres: [...input.genres, e.target.value],
+    });
+  };
 
-    const handleChange = (e) => {
-        setInput({
-            ...input,
-            [e.target.name]: e.target.value
-        });
-    };
-        
+  const handleSelectPlatform = (e) => {
+    setInput({
+      ...input,
+      platforms: [...input.platforms, e.target.value],
+    });
+  }
 
-    return (
-        <div className={"create-container-" + clase}>
-            <Nav />
-            <div className={"create-box-" + clase}>
-            <form className={"form-container-" + clase} >
-                <div className={"form-box-" + clase} >
 
-                    <label className={"label-create-" + clase} >Name:</label>
-                    <input  
-                    type="text" 
-                    maxLength= '30'
-                    value={input.name}
-                    name="name"
-                    onChange={handleChange}
-                    />
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(postGame(input));
 
-                    <label className={"label-create-" + clase} >Image URL: </label>
-                    <input  
-                    type="text" 
-                    value={input.img}
-                    name="img" 
-                    placeholder= 'url...'
-                    onChange={handleChange}
-                    />
+    setInput({
+      name: "",
+      img: "",
+      released: "",
+      rating: "",
+      platforms: [],
+      genres: [],
+      description: "",
+    });
+    navigate('/home')// es el remplazo de useHistory en react 6
+  };
 
-                    <label className={"label-create-" + clase} >Release date: </label>
-                    <input  
-                    type="date" 
-                    value={input.released}
-                    name="released" 
-                    onChange={handleChange}
-                    />
 
-                    <label className={"label-create-" + clase} >Rating: </label>
-                    <input  
-                    type="number" 
-                    step='0.1'
-                    min='0'
-                    max='5'
-                    value={input.rating}
-                    name="rating" 
-                    onChange={handleChange}
-                    />
 
-                    <label className={"label-create-" + clase} >Platforms: </label>
-                    <select
-                    name="platforms"
-                    value={input.platforms}
-                    multiple
-                    onChange={handleChange}
-                    >
-                        {platforms.map((platform) => (
-                            <option key={platform.id} value={platform.id}>{platform.name}</option>
-                        ))}
-                    </select>
 
-                    <label className={"label-create-" + clase} >Genres: </label>
-                    <select
-                    name="genres"
-                    value={input.genres}
-                    multiple
-                    >
-                        {genres.map((genre) => (
-                            <option key={genre.id} value={genre.id}>{genre.name}</option>
-                        ))}
-                    </select>
+  return (
+    <div className={"create-container-" + clase}>
+        <Nav />
+        <div className={"create-box-" + clase}>
+        <form onSubmit={(e)=> handleSubmit(e)} className={"form-container-" + clase} >
+            <div className={"form-box-" + clase} >
 
-                    <label className={"label-create-" + clase} >Description: </label>
-                    <textarea
-                    type="text"
-                    maxLength= '500'
-                    value={input.description}
-                    name="description"
-                    
-                    />
-                    
-                </div>
-                
-            </form>
+                <label className={"label-create-" + clase} >Name:</label>
+                <input
+                type="text"
+                maxLength= '30'
+                value={input.name}
+                name="name"
+                onChange={(e) => handleChange(e)}
+                />
 
-            <div className={"button-container-" + clase}>
-                <button className={"button-create-" + clase} type='submit'>Create game</button>
+                <label className={"label-create-" + clase} >Image URL: </label>
+                <input
+                type="text"
+                value={input.img}
+                name="img"
+                placeholder= 'url...'
+                onChange={(e) => handleChange(e)}
+                />
+
+                <label className={"label-create-" + clase} >Release date: </label>
+                <input
+                type="date"
+                value={input.released}
+                name="released"
+                onChange={(e) => handleChange(e)}
+                />
+
+                <label className={"label-create-" + clase} >Rating: </label>
+                <input
+                type="number"
+                step='0.1'
+                min='0'
+                max='5'
+                value={input.rating}
+                name="rating"
+                onChange={(e) => handleChange(e)}
+                />
+
+                <label className={"label-create-" + clase} >Platforms: </label>
+                <select
+                name="platforms"
+                value={input.platforms}
+                onChange={handleSelectPlatform}
+                >
+                  
+                    {platforms.map((platform) => (
+                        <option key={platform.id} value={platform.name}>{platform.name}</option>
+                    ))}
+                </select>
+
+                <label className={"label-create-" + clase} >Genres: </label>
+                <select
+                name="genres"
+                value={input.genres}
+                onChange={(e) => handleSelectGenre(e)}
+                >
+                  
+                    {genres.map((genre) => (
+                        <option key={genre.id} value={genre.name}>{genre.name}</option>
+                    ))}
+                </select>
+
+
+                <label className={"label-create-" + clase} >Description: </label>
+                <textarea
+                type="text"
+                maxLength= '500'
+                value={input.description}
+                name="description"
+                onChange={(e) => handleChange(e)}
+
+                />
+
             </div>
 
-            <div className="footer">
-                <Footer />
-            </div>
-            </div>
-            <Loader />
+        </form>
+
+        <div className={"button-container-" + clase}>
+            <button className={"button-create-" + clase} type='submit'>Create game</button>
         </div>
-    )
+                {/* <ul>
+                  <li>
+                    {input.genres.map((g => g + " ," ))}
+                  </li>
+                </ul>
 
-}
+                <ul>
+                  <li>
+                    {input.platforms.map((p => p + " ," ))}
+                  </li>
+                </ul> */}
+        <div className="footer">
+            <Footer />
+        </div>
+        </div>
+    </div>
+  );
+};

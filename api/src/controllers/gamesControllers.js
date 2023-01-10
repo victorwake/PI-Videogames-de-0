@@ -94,8 +94,5 @@ if (name) {
     res.status(200).send(allGames)
 }
 };
-/*
-Fin de traer todos los juegos de la API y tambien la busqueda 
-*/
 
-module.exports = { allGames };
+module.exports = { allGames,};

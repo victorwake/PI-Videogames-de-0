@@ -1,173 +1,172 @@
 /* Modo light end */
 
 .create-container-light{
-    height: 100vh;
-    padding-top: 8px;
-    transition-duration: 01s;
-    background-color: rgb(224, 224, 224);
-    color: #333333;
-    
-  }
-
-  .create-box-light{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  height: 100vh;
+  padding-top: 8px;
+  transition-duration: 01s;
+  background-color: rgb(224, 224, 224);
+  color: #333333;
+  
 }
-  
-  .form-container-light{
-    /* height: 100vh;
-    width: 100vw;
-    position: fixed;
-    display: flex;
-    flex-direction: column; */
-    padding-top: 100px;
-    align-items: center;
-    transition-duration: 01s;
-    background-color: rgb(224, 224, 224);
-  }
-  
-  .label-create-light{
-    font-size: 20px;
-    font-weight: 600;
-    margin: 10px;
-    /* background-color: aliceblue; */
-    transition-duration: 01s;
-    color: #333333;
-  }
-  
-  .form-box-light{
-    width: 300px;
-    height: 500px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    transition-duration: 01s;
-    background-color: rgb(224, 224, 224);
-    color: #333333;
-    box-shadow: -5px -5px 10px rgba(94, 104, 121, 0.486), 5px 3px 10px rgba(255, 255, 255, 0.76);
-    
-  }
 
-  .button-create-light{
-    width: 100px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    margin-top: 30px;
-    transition-duration: 01s;
-    background-color: rgb(224, 224, 224);
-    background: linear-gradient(rgb(224, 224, 224), rgb(199, 199, 199));
-    box-shadow: -5px -2px 10px rgba(94, 104, 121, 0.486), 5px 3px 8px rgb(255, 255, 255);
-  }
+.create-box-light{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
-  .button-create-light:hover{
-    background-color: rgb(224, 224, 224);
-    color: rgba(176, 78, 78, 0.692);
-    box-shadow: -3px -2px 5px rgba(255, 255, 255, 0.445) , 3px 2px 5px rgba(94, 104, 121, 0.363);
-  }
+.form-container-light{
+  /* height: 100vh;
+  width: 100vw;
+  position: fixed;
+  display: flex;
+  flex-direction: column; */
+  padding-top: 100px;
+  align-items: center;
+  transition-duration: 01s;
+  background-color: rgb(224, 224, 224);
+}
+
+.label-create-light{
+  font-size: 20px;
+  font-weight: 600;
+  margin: 10px;
+  /* background-color: aliceblue; */
+  transition-duration: 01s;
+  color: #333333;
+}
+
+.form-box-light{
+  width: 300px;
+  height: 500px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  transition-duration: 01s;
+  background-color: rgb(224, 224, 224);
+  color: #333333;
+  box-shadow: -5px -5px 10px rgba(94, 104, 121, 0.486), 5px 3px 10px rgba(255, 255, 255, 0.76);
   
-  /* Modo light fin */
-  
-   /* --------------------------------------------------------- */
-  
-  
-  /*Modo Dark*/
-  
+}
+
+.button-create-light{
+  width: 100px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  margin-top: 30px;
+  transition-duration: 01s;
+  background-color: rgb(224, 224, 224);
+  background: linear-gradient(rgb(224, 224, 224), rgb(199, 199, 199));
+  box-shadow: -5px -2px 10px rgba(94, 104, 121, 0.486), 5px 3px 8px rgb(255, 255, 255);
+}
+
+.button-create-light:hover{
+  background-color: rgb(224, 224, 224);
+  color: rgba(176, 78, 78, 0.692);
+  box-shadow: -3px -2px 5px rgba(255, 255, 255, 0.445) , 3px 2px 5px rgba(94, 104, 121, 0.363);
+}
+
+/* Modo light fin */
+
+ /* --------------------------------------------------------- */
+
+
+/*Modo Dark*/
+
 .create-container-dark{
-    height: 100vh;
-    /* display: flex;
-    flex-direction: column;
-    align-items: center; */
-    /* padding-top: 8px; */
-    padding-top: 8px;
-    transition-duration: 01s;
-    background-color: #333333;
-    
+  height: 100vh;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center; */
+  /* padding-top: 8px; */
+  padding-top: 8px;
+  transition-duration: 01s;
+  background-color: #333333;
+  
 }
 
 .create-box-dark{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-  
+
 .form-box-dark{
-    width: 300px;
-    height: 500px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    transition-duration: 01s;
-    background-color: #333333;
-    color: rgb(255, 255, 255);
-    box-shadow: -3px -2px 10px rgb(0, 0, 0), 3px 2px 10px rgba(255, 255, 255, 0.247);
+  width: 300px;
+  height: 500px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  transition-duration: 01s;
+  background-color: #333333;
+  color: rgb(255, 255, 255);
+  box-shadow: -3px -2px 10px rgb(0, 0, 0), 3px 2px 10px rgba(255, 255, 255, 0.247);
 }
-  
-  
-  
+
+
+
 .form-container-dark{
-    /* height: 100vh;
-    width: 100vw; */
-    /* position: fixed;
-    display: flex;
-    flex-direction: column; */
-    padding-top: 100px;
-    align-items: center;
-    transition-duration: 01s;
-    background-color: #333333;
-    
-}
+  /* height: 100vh;
+  width: 100vw; */
+  /* position: fixed;
+  display: flex;
+  flex-direction: column; */
+  padding-top: 100px;
+  align-items: center;
+  transition-duration: 01s;
+  background-color: #333333;
   
+}
+
 .label-create-dark{
-    font-size: 20px;
-    font-weight: 600;
-    margin: 10px;
-    /* background-color: aliceblue; */
-    transition-duration: 01s;
-    color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 10px;
+  /* background-color: aliceblue; */
+  transition-duration: 01s;
+  color: #fff;
 }
 
 .button-create-dark{
-    width: 100px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    margin-top: 30px;
-    transition-duration: 01s;
-    background-color: #333333;
-    color: rgb(255, 255, 255);
-    box-shadow: -3px -2px 10px rgb(0, 0, 0), 3px 2px 10px rgba(255, 255, 255, 0.247);
+  width: 100px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  margin-top: 30px;
+  transition-duration: 01s;
+  background-color: #333333;
+  color: rgb(255, 255, 255);
+  box-shadow: -3px -2px 10px rgb(0, 0, 0), 3px 2px 10px rgba(255, 255, 255, 0.247);
 }
 
 .button-create-dark:hover{
-    background-color: #333333;
-    color: rgba(176, 78, 78, 0.479);
-    box-shadow: -3px -2px 5px rgba(255, 0, 0, 0.2), 3px 2px 5px rgba(253, 99, 99, 0.1);
+  background-color: #333333;
+  color: rgba(176, 78, 78, 0.479);
+  box-shadow: -3px -2px 5px rgba(255, 0, 0, 0.2), 3px 2px 5px rgba(253, 99, 99, 0.1);
 }
-  
-  /* Modo dark fin */
+
+/* Modo dark fin */
 
 
 .footer{
-    position: fixed;
-    bottom: 15px;
-    width: 100%;
-    /* height: 50px; */
-    display: block;
-    justify-content: center;
-    align-items: center;
+  position: fixed;
+  bottom: 15px;
+  width: 100%;
+  /* height: 50px; */
+  display: block;
+  justify-content: center;
+  align-items: center;
 }
-  

@@ -20,7 +20,7 @@
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
 // const { getApiGenres } = require('./src/controllers/genresControllers');
-// const { getApiPlatforms } = require('./src/controllers/platformsControllers');
+// const { insertPlatform } = require('./src/controllers/platformsControllers');
 
 // LEER!!!!! --> una vez que se cargaron los datos en la db hacer lo siguiente:
 // 1- desactivar el Auto Save del visual (si es que lo tenes activo)
@@ -30,7 +30,7 @@ const { conn } = require('./src/db.js');
 conn.sync({ force: false }).then(() => {
   server.listen(3001, () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
-    //getApiGenres()
-    //getApiPlatforms()
+    // getApiGenres()
+    // insertPlatform()
   });
 });

@@ -14,6 +14,7 @@ export const Details = () => {
     const {id} = useParams();
     const dispatch = useDispatch();
     const detal = useSelector((state)=>state.details) 
+
     console.log(detal)
     useEffect(()=>{
         dispatch(getGameById(id))
@@ -34,7 +35,17 @@ export const Details = () => {
                         <img className={'image-details-' + clase} src={detal.img} />
 
                         <p className={'description-title-' + clase}>Genres:</p>
-                        <p className={'genres-details-' + clase}> {detal.genres>1?detal.genres.join('-'):detal.genres}</p>
+                        <p className={'genres-details-' + clase}>
+                            {detal.genres && detal.genres.map((g) => {
+                                if(typeof detal.genres[0] === 'string'){
+                                    return g
+                                }else{
+                                    return g.name
+                                }
+                            }).join('|')
+                            }
+                            </p>
+                        {/* <p className={'genres-details-' + clase}> {detal.genres>1?detal.genres.join('-'):detal.genres}</p> */}
 
 
                         <p className={'description-title-' + clase}>Platforms: </p>
@@ -59,7 +70,4 @@ export const Details = () => {
                 
         </div>
     )
-}
-
-
-
+}   

@@ -54,15 +54,15 @@ export const CreateGame = () => {
     e.preventDefault();
     dispatch(postGame(input));
 
-    setInput({
-      name: "",
-      img: "",
-      released: "",
-      rating: "",
-      platforms: [],
-      genres: [],
-      description: "",
-    });
+    // setInput({
+    //   name: "",
+    //   img: "",
+    //   released: "",
+    //   rating: "",
+    //   platforms: [],
+    //   genres: [],
+    //   description: "",
+    // });
     navigate('/home')// es el remplazo de useHistory en react 6
   };
 
@@ -116,8 +116,9 @@ export const CreateGame = () => {
                 <label className={"label-create-" + clase} >Platforms: </label>
                 <select
                 name="platforms"
+                // multiple={true}
                 value={input.platforms}
-                onChange={handleSelectPlatform}
+                onChange={(e)=> handleSelectPlatform(e)}
                 >
                   
                     {platforms.map((platform) => (
@@ -128,6 +129,7 @@ export const CreateGame = () => {
                 <label className={"label-create-" + clase} >Genres: </label>
                 <select
                 name="genres"
+                // multiple={true}
                 value={input.genres}
                 onChange={(e) => handleSelectGenre(e)}
                 >

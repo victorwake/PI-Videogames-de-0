@@ -24,7 +24,7 @@ const postGame = async (req, res) => {
                     name: genres
                 }
             })
-            newGame.addGenres(genresDb)
+            newGame.addGenre(genresDb)
             res.status(200).send('The game was created successfully')
         } catch (error)  {
                 if (error.name === 'SequelizeUniqueConstraintError') {
@@ -36,6 +36,28 @@ const postGame = async (req, res) => {
         }
     }
 };
+            
+//     const newGame = await Videogame.create({
+//         name,
+//         description,
+//         release,
+//         rating,
+//         platforms,
+//         img
+//     });
+//     genres?.forEach(async (g) => {
+//         const newGenre = await Genre.findOrCreate({
+//             where: {
+//                 name: genres
+//             }
+//         });
+
+//         await newGame.addGenre(newGenre);
+//     });
+
+//     res.status(200).send('The game was created successfully');
+// };
+
 /*Fin de crear un nuevo juego en la DB*/
 
 /*

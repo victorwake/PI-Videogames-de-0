@@ -124,7 +124,10 @@ export const GET_GENRES = 'GET_GENRES';
 export function postGame(payload) {
     return async function (dispatch) {
         const json = await axios.post('http://localhost:3001/game', payload);
-        return json;
+        return dispatch({
+            type: POST_GAME,
+            payload: json.data
+        });
     };
 }
 

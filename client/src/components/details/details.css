@@ -106,12 +106,13 @@
     transition-duration: 01s;
     background-color: #333333;
     color: #fff;
+    
 
 }
 
 .conteiner-card-details-dark{
     height: 100%;
-    width: 100vw;
+    width: 100%;
     display: flex;
     flex-direction: column;
     padding-top: 70px;
@@ -187,7 +188,7 @@
 
 .card-details-dark{
     padding: 20px;
-    width: 60%;
+    width: 40%;
     /* height: 800px; */
     border-radius: 10px;
     transition-duration: 01s;
@@ -206,3 +207,22 @@
 }
 
 /* Modo dark fin */
+
+@media screen and (max-width: 768px) {
+    .card-details-light{
+        width: 80%;
+    }
+    .card-details-dark{
+        width: 80%;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    .card-details-light{
+        width: 20%;
+    }
+    .card-details-dark{
+        width: 20%;
+    }
+}
+    

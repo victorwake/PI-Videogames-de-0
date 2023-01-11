@@ -1,12 +1,13 @@
 import './details.css';
 import React from 'react';
 import { useSelector } from "react-redux";
-import { getGameById, cleanDetails } from '../../redux/action';
+import { getGameById, cleanDetails, deleteGame } from '../../redux/action';
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Footer } from '../footer/Footer';
 import { Nav } from '../nav/Nav';
+import { Link } from 'react-router-dom';
 
 
 export const Details = () => {
@@ -22,6 +23,23 @@ export const Details = () => {
             dispatch(cleanDetails({}))
         }
     },[dispatch,id])
+
+    // Function to delete:
+    function handleDelete() {
+        if (
+            window.confirm(
+            `Are you sure you want to delete the videogame ${detal.name}?`
+            )
+        ) {
+            dispatch(deleteGame(id))
+                .then((res) => {
+                alert('Videogame deleted');
+            })
+            .catch((err) => {
+                alert('Apologies! We have encountered an error. Try again.');
+            });
+        }
+    }
     
     return (
         
@@ -62,7 +80,14 @@ export const Details = () => {
                         <p >{detal.rating}</p>
                         <span className={"spam-container-" + clase} >&#9733;</span>
                         </div>
+                        <Link to="/home">
+                        {/* Delete button: */}
+                        {isNaN(id) ? (
+                            <button className={'button-delete-' + clase} onClick={handleDelete}>X</button>
+                        ) : null}
+                        </Link>
                     </div>
+
                         <div className='footer-details'>
                             <Footer />
                         </div>

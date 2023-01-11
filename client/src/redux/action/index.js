@@ -96,7 +96,7 @@ export function getGameName(name) {
                 } else {
                     return dispatch({
                         type: GET_GAME_NAME,
-                        payload: json.data
+                        payload: json.data.slice(0, 15)
                     });
                 }
             } catch (error) {console.log(error);
@@ -122,14 +122,13 @@ export const GET_GENRES = 'GET_GENRES';
 /*----------------------------------------------*/
 
 export function postGame(payload) {
-    return async function (dispatch) {
-        const json = await axios.post('http://localhost:3001/game', payload);
-        return dispatch({
-            type: POST_GAME,
-            payload: json.data
-        });
-    };
+    return  (dispatch) => {
+        return axios.post('http://localhost:3001/game', payload)
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
+    }
 }
+        
 
 export const POST_GAME = 'POST_GAME';
 
@@ -182,3 +181,19 @@ export function filterGameApiOrDb(payload) {
 }
 
 export const FILTER_GAME_API_OR_DB = 'FILTER_GAME_API_OR_DB';
+
+/*----------------------------------------------*/
+
+export function deleteGame(id) {
+    return async function (dispatch) {
+        let videogame = await axios.delete(`/game/${id}`);
+        return dispatch({
+            type: DELETE_GAME,
+            payload: videogame.data,
+        });
+    };
+};
+
+export const DELETE_GAME = 'DELETE_GAME';
+
+/*----------------------------------------------*/

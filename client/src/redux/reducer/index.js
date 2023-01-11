@@ -13,7 +13,8 @@ import {
     GET_PLATFORMS,
     GET_GAME_BY_ID,
     CLEAN_DETAILS,
-    FILTER_GAME_API_OR_DB
+    FILTER_GAME_API_OR_DB,
+    DELETE_GAME
 
         } from '../action/index.js';
 
@@ -141,6 +142,14 @@ function rootReducer(state = initialState, action){
                 ...state,
                 games: filterStatus
             };
+
+        case DELETE_GAME:
+            return {
+                ...state,
+                games: state.games.filter((g) => g.id !== action.payload),
+                allGames: state.allGames.filter((g) => g.id !== action.payload),
+            };
+            
         default:
             return state;
     }

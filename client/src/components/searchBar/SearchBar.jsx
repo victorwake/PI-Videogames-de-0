@@ -17,11 +17,13 @@ export function SearchBar() {
     function handleSearch(e) {
         e.preventDefault();
         dispatch(getGameName(name));
+        
     }
 
     function handleInputChange(e) {
         e.preventDefault();
         setName(e.target.value);
+        
     }
     /*Fin Buscar por nombre
     ------------------------------------------------------*/
@@ -77,6 +79,7 @@ export function SearchBar() {
 		                <button className={'button-search-' + clase} 
                         type="submit"
                         onClick={(e) => handleSearch(e)}
+                        value="name"
                         >
                         Search
                         </button>

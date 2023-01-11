@@ -1,0 +1,40 @@
+  Tareas para mejorar el proyecto
+
+
+* El search, debe traer solo los 15 primeros juegos
+  y se debe limpiar el input
+
+ Falta(+) Echo( )
+--------------------------------------------------------  
+
+* Falta hacer un currenPage en redux para que cuando se filter
+  y uno este en la pagina 4 lo lleve a la pagina 1, sino no se
+  ven los resultados
+
+  Falta(+) Echo( )
+--------------------------------------------------------  
+
+  * Hacer un landing
+
+   Falta(+) Echo( )
+--------------------------------------------------------  
+
+* Mostrar un mensaje si no encuenrta ningun juego el Search
+  
+  Falta(+) Echo( )
+--------------------------------------------------------  
+
+* Hacer un reset para los filtros
+  
+  Falta(+) Echo( )
+--------------------------------------------------------    
+
+* Css Para los filtros
+
+  Falta(+) Echo( )
+--------------------------------------------------------    
+
+* Falta que ande crear un juego
+
+  Falta(+) Echo( )
+--------------------------------------------------------     

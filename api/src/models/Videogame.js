@@ -50,10 +50,7 @@ module.exports = (sequelize) => {
 
     img: {
       type: DataTypes.TEXT,
-      defaultValue:
-      'https://img.freepik.com/premium-vector/vector-illustration-game-stick-with-word-game_586360-551.jpg?w=640',
   },
-  
   },
   {
     timestamps: false,

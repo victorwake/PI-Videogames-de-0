@@ -5,6 +5,7 @@ import { postGame, getPlatforms, getGenres } from "../../redux/action";
 import { Footer } from "../footer/Footer";
 import { Nav } from "../nav/Nav";
 import { useNavigate } from 'react-router-dom';
+import imgDefault  from '../../img/default.jpg'
 
 export const CreateGame = () => {
   const dispatch = useDispatch();
@@ -52,7 +53,8 @@ export const CreateGame = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(postGame(input));
+    if(!input.img) input.img = imgDefault;
+    postGame(input);
 
     // setInput({
     //   name: "",
@@ -151,12 +153,13 @@ export const CreateGame = () => {
                 />
 
             </div>
+              <div className={"button-container-" + clase}>
+                <button className={"button-create-" + clase} type='submit'>Create game</button>
+              </div>
 
         </form>
 
-        <div className={"button-container-" + clase}>
-            <button className={"button-create-" + clase} type='submit'>Create game</button>
-        </div>
+        
                 {/* <ul>
                   <li>
                     {input.genres.map((g => g + " ," ))}

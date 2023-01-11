@@ -24,7 +24,7 @@ const getApiGames = async () => {
                     id: e.id,
                     name: e.name,
                     description: e.description,
-                    release: e.released,
+                    released: e.released,
                     rating: e.rating,
                     platforms: e.platforms.map(p => p.platform.name),
                     genres: e.genres.map(g => g.name),
@@ -44,7 +44,7 @@ const apiGames = await apiUrl.data.results.map(e => {
         id: e.id,
         name: e.name,
         description: e.description,
-        release: e.released,
+        released: e.released,
         rating: e.rating,
         platforms: e.platforms.map(p => p.platform.name),
         genres: e.genres.map(g => g.name),
@@ -55,16 +55,16 @@ return apiGames;
 }
 
 const getDbGames = async () => {
-const dbGames = await Videogame.findAll({
-    include: {
-        model: Genre,
-        attributes: ['name'],
-        through: { // permite recuperar las propiedades de la tabla de combinación
+    return await Videogame.findAll({
+        include: {
+            model: Genre,
+            attributes: ['name'],
+            through: { // permite recuperar las propiedades de la tabla de combinación
             attributes: []
+            }
         }
-    }
-})
-return dbGames;
+    })
+
 }
 
 const getAllGames = async () => {

@@ -54,20 +54,22 @@ export const Details = () => {
 
                         <p className={'description-title-' + clase}>Genres:</p>
                         <p className={'genres-details-' + clase}>
-                            {detal.genres && detal.genres.map((g) => {
-                                if(typeof detal.genres[0] === 'string'){
+                            {detal.genres?.map((g, i) => {
+                                if (typeof detal.genres[0] === 'string') {
                                     return g
-                                }else{
+                                            
+                                } else {
                                     return g.name
                                 }
-                            }).join('|')
-                            }
+                            }).join(' | ')}   
                             </p>
                         {/* <p className={'genres-details-' + clase}> {detal.genres>1?detal.genres.join('-'):detal.genres}</p> */}
 
 
                         <p className={'description-title-' + clase}>Platforms: </p>
-                        <p className={'platforms-details-' + clase}>{detal.platforms}</p>
+                        <p className={'platforms-details-' + clase}>{detal.platforms?.map((p) => 
+                                p
+                            ).join(' | ')}</p>
 
                         <p className={'description-title-' + clase}>Description:</p>
                         <p className={'description-details-' + clase}> {detal.description}</p>

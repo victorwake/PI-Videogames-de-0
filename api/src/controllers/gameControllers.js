@@ -11,23 +11,19 @@ Creo un nuevo juego en la DB
 const postGame = async (req, res) => {
     const { name, description, released, rating, platforms, genres, img } = req.body;
             const newGame = await Videogame.create({
-        name,
-        description,
-        released,
-        rating,
-        platforms,
-        img
+            name, 
+            description, 
+            released, 
+            rating, 
+            platforms, 
+            img
     });
-    genres?.forEach(async (g) => {
-        const newGenre = await Genre.findOrCreate({
-            where: {
-                name: genres
-            }
-        });
-
-        await newGame.addGenre(newGenre);
+    let genreDb = await Genre.findAll({
+        where: {
+            name: genres,
+        },
     });
-
+    await newGame.addGenre(genreDb);
     res.status(200).send('The game was created successfully');
 };
 
@@ -56,7 +52,7 @@ const getGameById = async (req, res) => {
                     description: apiDb.description,
                     released: apiDb.released,
                     rating: apiDb.rating,
-                    platforms: apiDb.platforms.map((platform) => platform.name),
+                    platforms: apiDb.platforms.map((platform) => platform),
                     genres: apiDb.genres.map((genre) => genre.name),
                     img: apiDb.img,
                 };

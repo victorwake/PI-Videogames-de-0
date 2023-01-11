@@ -1,5 +1,5 @@
 import './home.css'
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getGames,getGenres, 
         filterGamesByGenre, 
@@ -144,9 +144,9 @@ export const Home = () => {
 
                 <div  className={"card-container-" + clase} >
                 
-                    {currentGames?.map((game) => {
-                        return (
-                                    <Link key={game.id} to={'/game/' + game.id } style={{ color: 'inherit', textDecoration: 'inherit'}}>
+                    {currentGames?.map((game => (
+                        <Fragment key={game.id}>
+                                    <Link to={'/game/' + game.id } style={{ color: 'inherit', textDecoration: 'inherit'}}>
                                         <Card
                                             key={game.id}
                                             name={game.name}
@@ -154,9 +154,10 @@ export const Home = () => {
                                             genres={game.genres}
                                         />
                                     </Link>
-                                )
-                    })
-                }
+                        </Fragment>
+                    )
+                    ))}
+                    
                 </div>
                 <div className={"pagination-container-botoon-" + clase} >
                 <Paginate 

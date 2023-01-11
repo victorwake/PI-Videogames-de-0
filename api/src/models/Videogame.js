@@ -23,7 +23,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
 
-    release: {
+    released: {
       type: DataTypes.STRING,
     },
 
@@ -50,6 +50,7 @@ module.exports = (sequelize) => {
 
     img: {
       type: DataTypes.TEXT,
+      defaultValue: 'https://149361087.v2.pressablecdn.com/wp-content/uploads/2018/02/hangtime.jpg',
   },
   },
   {

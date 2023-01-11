@@ -1,7 +1,7 @@
 import "./create.css";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { postGame, getPlatforms, getGenres } from "../../redux/action";
+import { postGame, getPlatforms, getGenres, getGames } from "../../redux/action";
 import { Footer } from "../footer/Footer";
 import { Nav } from "../nav/Nav";
 import { useNavigate } from 'react-router-dom';
@@ -54,17 +54,18 @@ export const CreateGame = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if(!input.img) input.img = imgDefault;
-    postGame(input);
+    dispatch(postGame(input));
+    dispatch(getGames());
 
-    // setInput({
-    //   name: "",
-    //   img: "",
-    //   released: "",
-    //   rating: "",
-    //   platforms: [],
-    //   genres: [],
-    //   description: "",
-    // });
+    setInput({
+      name: "",
+      img: "",
+      released: "",
+      rating: "",
+      platforms: [],
+      genres: [],
+      description: "",
+    });
     navigate('/home')// es el remplazo de useHistory en react 6
   };
 

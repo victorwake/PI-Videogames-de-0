@@ -9,6 +9,7 @@ import { Footer } from '../footer/Footer';
 import { Nav } from '../nav/Nav';
 import { Link } from 'react-router-dom';
 import { deleteGame } from '../../helpers/deleteGame';
+import { useNavigate } from 'react-router-dom';
 
 
 export const Details = () => {

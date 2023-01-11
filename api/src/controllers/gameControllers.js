@@ -10,6 +10,7 @@ Creo un nuevo juego en la DB
 */
 const postGame = async (req, res) => {
     const { name, description, released, rating, platforms, genres, img } = req.body;
+    try {  
             const newGame = await Videogame.create({
             name, 
             description, 
@@ -25,6 +26,9 @@ const postGame = async (req, res) => {
     });
     await newGame.addGenre(genreDb);
     res.status(200).send('The game was created successfully');
+    } catch (err) {
+        next(err);       
+    }
 };
 
 /*Fin de crear un nuevo juego en la DB*/

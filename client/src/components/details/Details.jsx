@@ -1,13 +1,14 @@
 import './details.css';
 import React from 'react';
 import { useSelector } from "react-redux";
-import { getGameById, cleanDetails, deleteGame } from '../../redux/action';
+import { getGameById, cleanDetails, getGames } from '../../redux/action';
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Footer } from '../footer/Footer';
 import { Nav } from '../nav/Nav';
 import { Link } from 'react-router-dom';
+import { deleteGame } from '../../helpers/deleteGame';
 
 
 export const Details = () => {
@@ -25,13 +26,14 @@ export const Details = () => {
     },[dispatch,id])
 
     // Function to delete:
-    function handleDelete() {
+    function handleDelete(id) {
         if (
             window.confirm(
             `Are you sure you want to delete the videogame ${detal.name}?`
             )
         ) {
-            dispatch(deleteGame(id))
+            deleteGame(id)
+            dispatch(getGames())
                 .then((res) => {
                 alert('Videogame deleted');
             })
@@ -85,7 +87,7 @@ export const Details = () => {
                         <Link to="/home">
                         {/* Delete button: */}
                         {isNaN(id) ? (
-                            <button className={'button-delete-' + clase} onClick={handleDelete}>X</button>
+                            <button type='button' className={'button-delete-' + clase} onClick={handleDelete}>X</button>
                         ) : null}
                         </Link>
                     </div>

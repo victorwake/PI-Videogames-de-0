@@ -142,13 +142,6 @@ function rootReducer(state = initialState, action){
                 ...state,
                 games: filterStatus
             };
-
-        case DELETE_GAME:
-            return {
-                ...state,
-                games: state.games.filter((g) => g.id !== action.payload),
-                allGames: state.allGames.filter((g) => g.id !== action.payload),
-            };
             
         default:
             return state;

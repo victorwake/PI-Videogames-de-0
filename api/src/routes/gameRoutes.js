@@ -6,7 +6,7 @@ const { postGame, getGameById, updateGameOk, deleteGame } = require('../controll
 
 router.post('/', postGame);
 router.get('/:id', getGameById);
-router.delete("/:id", deleteGame);
+router.delete("/:id/delete", deleteGame);
 router.put("/", updateGameOk);
 
 module.exports = router;

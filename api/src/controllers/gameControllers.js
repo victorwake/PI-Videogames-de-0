@@ -131,14 +131,14 @@ const updateGameOk = async (req,res,next) => {
 
 /*Eliminar un juego de la DB*/
 
-const deleteGame =  async (req,res,next) => {
+const deleteGame = async (req, res, next) => {
+    const { id } = req.params;
     try {
-        let { id } = req.params;
-        let game = await Videogame.findByPk(id);
-       await game.destroy();
-       res.status(200).send("Videogame delete");
-    } catch (error) {
-        res.status(400).send(error.message);
+        let gameDelete = await Videogame.findByPk(id)
+        gameDelete.destroy();
+        res.status(201).send("Videogame deleted correctly");
+    } catch (err) {
+        next(err)
     }
 };
 

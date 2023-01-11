@@ -30,6 +30,7 @@ export const Details = () => {
         if (
             window.confirm(
             `Are you sure you want to delete the videogame ${detal.name}?`
+            // `Are you sure you want to delete the videogame ${detal.id}?`
             )
         ) {
             deleteGame(id)

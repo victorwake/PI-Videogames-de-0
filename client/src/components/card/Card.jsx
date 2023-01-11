@@ -16,3 +16,6 @@ export const Card = ({ name, img, genres }) => {//se lo paso por props
         </div>
     );
     }
+
+
+    

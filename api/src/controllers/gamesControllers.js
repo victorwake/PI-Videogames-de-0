@@ -55,17 +55,24 @@ return apiGames;
 }
 
 const getDbGames = async () => {
-    return await Videogame.findAll({
+
+    let infoDbGames = await Videogame.findAll({ 
         include: {
             model: Genre,
             attributes: ['name'],
-            through: { // permite recuperar las propiedades de la tabla de combinación
-            attributes: []
-            }
+            through: { attributes: [] }
         }
     })
-
-}
+    return infoDbGames = infoDbGames.map(e => ({
+        id: e.id, 
+        name: e.name, 
+        img: e.img, 
+        rating: e.rating,
+        platforms: e.platforms, 
+        genres: e.genres.map(e => e.name),
+        released: e.released
+    }))
+};
 
 const getAllGames = async () => {
 const apiGames = await getApiGames();

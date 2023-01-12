@@ -36,5 +36,5 @@
 
 * Falta que ande crear un juego
 
-  Falta(+) Echo( )
+  Falta( ) Echo(+)
 --------------------------------------------------------     

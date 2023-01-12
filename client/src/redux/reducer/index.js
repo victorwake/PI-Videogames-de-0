@@ -14,7 +14,7 @@ import {
     GET_GAME_BY_ID,
     CLEAN_DETAILS,
     FILTER_GAME_API_OR_DB,
-    DELETE_GAME
+    DELETE_VIDEOGAME
 
         } from '../action/index.js';
 
@@ -141,6 +141,17 @@ function rootReducer(state = initialState, action){
             return {
                 ...state,
                 games: filterStatus
+            };
+            case DELETE_VIDEOGAME:
+                return {
+                    ...state,
+                    games: state.games.filter(
+                    (game) => game.id !== action.payload
+                    ),
+
+                    allGames: state.allGames.filter(
+                    (game) => game.id !== action.payload
+                ),
             };
             
         default:

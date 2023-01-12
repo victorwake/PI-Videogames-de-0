@@ -168,22 +168,23 @@ input[type=checkbox] {
     visibility: hidden;
 }
 
-/* label {
-    /* cursor: pointer;
-    text-indent: -9999px;
-    width: 80px;
-    height: 20px;
-    background: rgb(26, 24, 24);
-    display: block;
-    border-radius: 100px;
-    position: relative; 
-} */
-
-label:after {
+#label-dark:after {
     content: "";
     position: absolute;
     top: 2px;
     left: 5px;
+    width: 16px;
+    height: 16px;
+    /* background: #fff; */
+    border-radius: 90px;
+    transition: 0.5s;
+}
+
+#label-light:after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    right: 5px;
     width: 16px;
     height: 16px;
     /* background: #fff; */
@@ -200,6 +201,6 @@ input:checked + label:after {
     transform: translateX(-100%);
 }
 
-label:active:after {
+.checkbox-dark:active:after {
     width: 130px;
 }

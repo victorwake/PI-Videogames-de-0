@@ -44,6 +44,7 @@ export function Nav() {
             </div>
                 <div className={'conteiner-switch-' + clase}>   
                         <input type='checkbox' 
+                        className={'input-switch-' + clase}
                         id='switch' 
                         onClick={()=> handleTheme()}>                    
                         </input>

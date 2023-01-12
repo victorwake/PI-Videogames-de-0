@@ -95,6 +95,7 @@
 }
 
 .button-delete-light{
+    cursor: pointer;
     width: 30px;
     height: 30px;
     border-radius: 10px;
@@ -105,6 +106,7 @@
 }
 
 .button-delete-light:hover{
+    
     background-color: rgb(224, 224, 224);
     box-shadow: -3px -5px 8px rgba(94, 104, 121, 0.212), inset  5px 3px 5px rgba(255, 255, 255, 0.322);
 }
@@ -215,6 +217,7 @@
 }
 
 .button-delete-dark{
+    cursor: pointer;
     width: 30px;
     height: 30px;
     border-radius: 10px;
@@ -236,6 +239,12 @@
     display: block;
     justify-content: center;
     align-items: center;
+}
+
+.button-delete-container-dark{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
 }
 
 /* Modo dark fin */

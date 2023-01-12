@@ -135,14 +135,24 @@ const updateGameOk = async (req,res,next) => {
 
 /*Eliminar un juego de la DB*/
 
+// const deleteGame = async (req, res, next) => {
+//     const { id } = req.params;
+//     try {
+//         let gameDelete = await Videogame.findByPk(id)
+//         gameDelete.destroy();
+//         res.status(201).send("Videogame deleted correctly");
+//     } catch (err) {
+//         next(err)
+//     }
+// };
 const deleteGame = async (req, res, next) => {
     const { id } = req.params;
+
     try {
-        let gameDelete = await Videogame.findByPk(id)
-        gameDelete.destroy();
-        res.status(201).send("Videogame deleted correctly");
+        await Videogame.destroy({ where: { id: id } });
+        res.send(id);
     } catch (err) {
-        next(err)
+        res.status(400).send(err);
     }
 };
 

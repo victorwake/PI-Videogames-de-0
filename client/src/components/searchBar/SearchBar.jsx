@@ -69,14 +69,14 @@ export function SearchBar() {
             
                 <div>
 	                <form className={'form-search-' + clase} action="" method="">		    
-		                <input className={'imput-search-' + clase} 
+		                <input id='input-search' className={'imput-search-' + clase} 
                         type="text" 
                         placeholder="Search Game"
                         onChange={(e) => handleInputChange(e)}
                         >
                         </input>	
                         
-		                <button className={'button-search-' + clase} 
+		                <button id='button-search' className={'button-search-' + clase} 
                         type="submit"
                         onClick={(e) => handleSearch(e)}
                         value="name"

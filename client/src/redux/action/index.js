@@ -184,4 +184,14 @@ export const FILTER_GAME_API_OR_DB = 'FILTER_GAME_API_OR_DB';
 
 /*----------------------------------------------*/
 
+export const deleteVideogame = (id) => {
+    return async function (dispatch) {
+        let videogame = await axios.delete(`/game/${id}`);
+        return dispatch({
+            type: DELETE_VIDEOGAME,
+            payload: videogame.data,
+        });
+    };
+};
 
+export const DELETE_VIDEOGAME = 'DELETE_VIDEOGAME';

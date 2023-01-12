@@ -91,7 +91,11 @@
     transition-duration: 01s;
     background-color: rgb(224, 224, 224);
     color: #333333;
-    box-shadow: -5px -5px 10px rgba(94, 104, 121, 0.486), 5px 3px 10px rgba(255, 255, 255, 0.76);
+    box-shadow: -5px -5px 10px rgba(94, 104, 121, 0.842), 5px 3px 10px rgba(255, 255, 255, 0.76);
+}
+
+.card-details-light:hover{
+    box-shadow: -5px -5px 10px rgba(54, 30, 30, 0.733), 5px 3px 10px rgba(248, 197, 197, 0.678);
 }
 
 .button-delete-light{
@@ -109,6 +113,30 @@
     
     background-color: rgb(224, 224, 224);
     box-shadow: -3px -5px 8px rgba(94, 104, 121, 0.212), inset  5px 3px 5px rgba(255, 255, 255, 0.322);
+}
+
+.button-delete-container-light{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.button-back-light{
+    cursor: pointer;
+    width: 50px;
+    height: 30px;
+    border-radius: 5px;
+    transition-duration: 01s;
+    transition-duration: 01s;
+    background-color: rgb(224, 224, 224);
+    color: #686868;
+    box-shadow: -5px -5px 10px rgba(94, 104, 121, 0.486), 5px 3px 10px rgba(255, 255, 255, 0.76);
+}
+
+.button-back-light:hover{
+    transition-duration: 01s;
+    color: rgb(73, 18, 18);
+    box-shadow: -5px -5px 8px rgba(54, 30, 30, 0.733), 5px 3px 10px rgba(248, 197, 197, 0.678);
 }
 
 
@@ -216,6 +244,10 @@
     background-color: #333333;
 }
 
+.card-details-dark:hover{
+    box-shadow: -3px -2px 5px rgba(255, 0, 0, 0.2), 3px 2px 5px rgba(253, 99, 99, 0.1);
+}
+
 .button-delete-dark{
     cursor: pointer;
     width: 30px;
@@ -245,6 +277,24 @@
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
+}
+
+.button-back-dark{
+    cursor: pointer;
+    width: 50px;
+    height: 30px;
+    border-radius: 5px;
+    transition-duration: 01s;
+    transition-duration: 01s;
+    background-color: #333333;
+    color: rgb(194, 194, 194);
+    box-shadow: -3px -2px 8px rgb(0, 0, 0), 3px 2px 8px rgba(255, 255, 255, 0.178);
+}
+
+.button-back-dark:hover{
+    transition-duration: 01s;
+    color: rgba(176, 78, 78, 0.479);
+    box-shadow: -3px -2px 5px rgba(255, 0, 0, 0.2), 3px 2px 5px rgba(253, 99, 99, 0.1);
 }
 
 /* Modo dark fin */

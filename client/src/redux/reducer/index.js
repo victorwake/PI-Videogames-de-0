@@ -14,7 +14,8 @@ import {
     GET_GAME_BY_ID,
     CLEAN_DETAILS,
     FILTER_GAME_API_OR_DB,
-    DELETE_VIDEOGAME
+    DELETE_VIDEOGAME, 
+    LOAD_ALL_GAME
 
         } from '../action/index.js';
 
@@ -25,6 +26,7 @@ const initialState = {
     genres: [],
     platforms: [],
     details: [],
+    loadAllGames: true,
 };
 
 function rootReducer(state = initialState, action){
@@ -51,6 +53,7 @@ function rootReducer(state = initialState, action){
                 ...state,
                 games: action.payload,
                 allGames: action.payload,
+                loadAllGames: false,
             };
 
         /* Filtrar por genero */
@@ -136,7 +139,7 @@ function rootReducer(state = initialState, action){
             const filterStatus = action.payload === 'All'
                 ? gamesStatus
                 :action.payload === 'created'
-                ? gamesStatus.filter((g) => g.createdInDb === true)
+                ? gamesStatus.filter((g) => g.id.length > 5)
                 : gamesStatus.filter((g) => !g.createdInDb);
             return {
                 ...state,
@@ -153,6 +156,13 @@ function rootReducer(state = initialState, action){
                     (game) => game.id !== action.payload
                 ),
             };
+
+            case LOAD_ALL_GAME:
+                return {
+                    ...state,
+                    loadAllGames: action.payload,
+            };
+                
             
         default:
             return state;

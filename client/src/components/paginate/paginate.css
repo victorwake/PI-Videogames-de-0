@@ -12,6 +12,7 @@
     margin-top: 10px;
 }
 
+
 .nav-container-light {
     height: 8vh;
     width: 100vw;
@@ -36,9 +37,10 @@
     margin: 3px;
     transition-duration: 01s;
     border: 2px solid rgb(15, 15, 15);
-    background-color: rgb(154, 154, 154);
-    box-shadow: -2px -2px 4px rgba(94, 104, 121, 0.486), 2px 2px 4px rgb(255, 255, 255);
+    background-color: rgb(194, 194, 194);
+    box-shadow: -3px -2px 6px rgba(0, 0, 0, 0.555), 3px 2px 4px rgb(255, 255, 255);
 }
+
 
 /* Modo light fin */
 

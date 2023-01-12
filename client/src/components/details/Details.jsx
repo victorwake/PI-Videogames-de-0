@@ -9,7 +9,7 @@ import { Footer } from '../footer/Footer';
 import { Nav } from '../nav/Nav';
 import { Link } from 'react-router-dom';
 import { deleteGame } from '../../helpers/deleteGame';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 
 export const Details = () => {
@@ -31,7 +31,6 @@ export const Details = () => {
         if (
             window.confirm(
             `Are you sure you want to delete the videogame ${detal.name}?`
-            // `Are you sure you want to delete the videogame ${detal.id}?`
             )
         ) {
             dispatch(deleteVideogame(id))
@@ -51,8 +50,11 @@ export const Details = () => {
             <div className={'conteiner-details-' + clase}>
             < Nav />
             </div>
+            
                 <div className={'conteiner-card-details-' + clase}>
+
                     <div className={'card-details-' + clase}>
+                    <button className={'button-back-' + clase}><Link style={{color: 'inherit',  textDecoration: 'inherit'}} to="/home">Back</Link></button>
                         <h1 className={'h1-details-' + clase}>{detal.name}</h1>
                         <img className={'image-details-' + clase} src={detal.img} />
 

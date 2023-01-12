@@ -1,4 +1,19 @@
 
+.container-loading{
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  
+}
+
+
+
+
+
+
+
+
+/* 
   
   #load-dark {
     position:absolute;
@@ -173,4 +188,4 @@
           transform:rotate(-180deg); 
           opacity:0;
       }
-  }
+  } */

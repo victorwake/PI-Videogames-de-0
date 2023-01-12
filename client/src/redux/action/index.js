@@ -195,3 +195,13 @@ export const deleteVideogame = (id) => {
 };
 
 export const DELETE_VIDEOGAME = 'DELETE_VIDEOGAME';
+
+/*----------------------------------------------*/
+
+export const loadingAllGame = value => {
+    return (dispatch) => {
+        dispatch({type: LOAD_ALL_GAME, payload: value})
+    }
+}
+
+export const LOAD_ALL_GAME = 'LOAD_ALL_GAME'

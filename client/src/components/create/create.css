@@ -673,8 +673,12 @@
   .columnsForm {
       width: 316px;
   }
-  .inputDescription,
-  .inputImgURL {
+  .inputDescription-dark,
+  .inputImgURL-dark {
+      width: 300px;
+  }
+  .inputDescription-light,
+  .inputImgURL-light {
       width: 300px;
   }
 }
@@ -683,10 +687,16 @@
   .columnsForm {
       width: 216px;
   }
-  .inputDescription {
+  .inputDescription-dark {
       width: 202px;
   }
-  .inputImgURL {
+  .inputImgURL-dark {
       width: 200px;
   }
+  .inputDescription-light {
+    width: 202px;
+}
+.inputImgURL-light {
+    width: 200px;
+}
 }

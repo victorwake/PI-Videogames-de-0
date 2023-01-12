@@ -18,6 +18,8 @@
 .card-container-light{
     display: grid;
     grid-template-columns: repeat(auto-fill, 230px);
+    align-items: center;
+    justify-content: center;
 }
 
 .pagination-container-light{
@@ -37,6 +39,15 @@
     padding: 30px;
     transition-duration: 01s;
     background-color: rgb(224, 224, 224);
+}
+
+.select-home-light{
+    margin: 7px;
+    padding: 4px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(224, 224, 224);
+    box-shadow: -5px -5px 10px rgba(94, 104, 121, 0.486), 5px 3px 8px rgb(255, 255, 255);
 }
 
 /* Modo light fin */
@@ -65,6 +76,8 @@
 .card-container-dark{
     display: grid;
     grid-template-columns: repeat(auto-fill, 230px);
+    align-items: center;
+    justify-content: center;
     }
     
 .card-dark{
@@ -114,6 +127,16 @@
     padding: 30px;
     transition-duration: 01s;
     background-color: #333333;
+}
+
+.select-home-dark{
+    margin: 7px;
+    padding: 4px;
+    border-radius: 5px;
+    border: none;
+    color: rgb(189, 189, 189);
+    background-color: #333333;
+    box-shadow: -3px -2px 8px rgba(0, 0, 0, 0.753), 3px 2px 6px rgba(255, 255, 255, 0.205);
 }
 
 /* Modo dark fin */

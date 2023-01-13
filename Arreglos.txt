@@ -31,10 +31,41 @@
 
 * Css Para los filtros
 
-  Falta(+) Echo( )
+  Falta( ) Echo(+)
 --------------------------------------------------------    
 
 * Falta que ande crear un juego
 
   Falta( ) Echo(+)
 --------------------------------------------------------     
+
+
+- tipografía: le pondría otra, tanto en el menú, paginado y It's a dark theme!
+
+- al lado de los filtros tener un botón de reset para limpiar filtros 
+- y volver al estado original
+
+- el loading además de centrarlo lo haría mucho más chiquito
+
+- cuando vas al detalle tarda en cargar la imágen, para que no 
+- quede feo capaz se pueda usar el loading hasta que todos los 
+- datos carguen y recien ahí renderice
+
+- cuando estas en la pagina 7 por ejemplo, vas al detalle y volvés 
+- te lleva a la pagina 1, debería llevarte a la página que estaba, 
+- con los filtros como estaba
+
+- cuando se usan los filtros y no encuentra nada poner un Not Found
+
+- el formulario no está controlado? le faltan los textos en rojo poniendo el error
+
+- el botón create del formulario no puede estar habilitado si 
+- los datos son incorrectos o tienen errores, tiene que habilitarse solo cuando esté todo ok
+
+- cuando creás un juego y vas al home filtrás por "creado" y no 
+- anda bien, a veces lo muestra y desaparece, a veces no lo muestra, 
+- a veces tenés que tocar varios filtros para que después aparezca
+
+- sería bueno que cuando creas un juego el array de objetos 
+- lo ordenes al revés, el creado arriba de todo, no abajo. Así 
+- el primer videojuego que se muestra en pag 1 es el creado

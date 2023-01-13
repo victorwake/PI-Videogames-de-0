@@ -1,6 +1,7 @@
 const { Platform_ } = require('../db');
 
 
+/*Creo las plataformas en la DB*/
 const insertPlatform = async () => {
     const typeOfPlatforms = [
         {name: 'Dreamcast'},

@@ -18,9 +18,11 @@ const getApiGenres = async (req, res, next) => {
         console.log("Genres loaded in the db")
     } catch (error) {
         console.log(error.message)
+        next(error)
     }
 }
 
+/*Tengo los generos guardados en la DB, los traigo y los mando al front*/
 const getDbGenres = async (req, res, next) => {
     try {
         const genresDb = await Genre.findAll()

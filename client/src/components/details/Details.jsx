@@ -33,8 +33,8 @@ export const Details = () => {
             `Are you sure you want to delete the videogame ${detal.name}?`
             )
         ) {
-            dispatch(deleteVideogame(id))
-            // dispatch(getGames())
+            deleteGame(id)
+            dispatch(getGames())
                 .then((res) => {
                 alert('Videogame deleted');
             })
@@ -89,12 +89,12 @@ export const Details = () => {
                         <span className={"spam-container-" + clase} >&#9733;</span>
                         </div>
                         <div className={'button-delete-container-' + clase}>
-                        {/* <Link to="/home"> */}
+                        <Link to="/home">
                         {/* Delete button: */}
                         {isNaN(id) ? (
                             <button type='button' className={'button-delete-' + clase} onClick={handleDelete}>X</button>
                         ) : null}
-                        {/* </Link> */}
+                        </Link>
                         </div>
                     </div>
 

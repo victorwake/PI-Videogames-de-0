@@ -6,7 +6,8 @@ import { getGames,getGenres,
         orderVideogamesByAZ, 
         filterGamesByPlatform, 
         getPlatforms, 
-        filterGameApiOrDb 
+        filterGameApiOrDb,
+        getGameName
         } from '../../redux/action/';
 import { Link } from 'react-router-dom';
 import { Card } from '../card/Card.jsx';
@@ -14,7 +15,7 @@ import { Paginate } from '../paginate/Paginate.jsx';
 import { Footer } from '../footer/Footer';
 import { SearchBar } from '../searchBar/SearchBar';
 import { Nav } from '../nav/Nav';
-import { Loader } from '../loader/Loader';
+import { Loading } from '../loading/Loading';
 
 
 
@@ -26,6 +27,7 @@ export const Home = () => {
     const clase = useSelector(state => state.theme)
     const genres = useSelector(state => state.genres);
     const platforms = useSelector(state => state.platforms);
+    const getGameName = useSelector(state => state.getGameName);
 
     //Paginado de 15 en 15
     const [currentPage, setCurrentPage] = useState(1); // pagina actual
@@ -66,11 +68,13 @@ export const Home = () => {
             dispatch(getGames());
         }
     }
+    
 
 
     return (
         <div className={"home-container-" + clase}>
             <Nav /> 
+            <div className={"filter-container-a-" + clase}>
             <div className={"filter-container-" + clase}>
                 {/* <h5>Order by:</h5> */}
                 <select 
@@ -117,6 +121,9 @@ export const Home = () => {
                         ))
                     }
                 </select>
+
+                <button className={'button-reset-filter-' + clase}>Reset filters</button>
+            </div>
             </div>
             <div>
                 <SearchBar />
@@ -131,8 +138,13 @@ export const Home = () => {
                     
                 </div>
 
+                <div className={"filter-container-a-" + clase}>     
                 <div  className={"card-container-" + clase} >
-                {loadAllGames && <Loader />}
+                
+                {loadAllGames  && <Loading />}
+                
+
+                {/* {getGameName && <h1 className={"no-results-" + clase}>No results found</h1>} */}
                     {currentGames?.map((game => (
                         <Fragment key={game.id}>
                                     <Link to={'/game/' + game.id } style={{ color: 'inherit', textDecoration: 'inherit'}}>
@@ -148,6 +160,7 @@ export const Home = () => {
                     ))}
                     
                 </div>
+                </div> 
                 
                 <div className={"pagination-container-botoon-" + clase} >
                 <Paginate 
@@ -156,7 +169,9 @@ export const Home = () => {
                     paginate={paginate}
                     currentPage={currentPage}  />
                 </div>
+                <div className={"footer-home-" + clase}>
                 <Footer />
+                </div>
         </div>
     )
 }

@@ -13,16 +13,18 @@ export function SearchBar() {
     /* Buscar por nombre
     ------------------------------------------------------*/
     const [name, setName] = useState('');
+    const [button, setButton] = useState('');
 
     function handleSearch(e) {
         e.preventDefault();
         dispatch(getGameName(name));
+        setName('');
         
     }
 
     function handleInputChange(e) {
-        e.preventDefault();
         setName(e.target.value);
+        setButton(e.target.value);
         
     }
     /*Fin Buscar por nombre
@@ -68,20 +70,24 @@ export function SearchBar() {
             </div>
             
                 <div>
-	                <form className={'form-search-' + clase} action="" method="">		    
-		                <input id='input-search' className={'imput-search-' + clase} 
+	                <form className={'form-search-' + clase} action="" method="">	
+
+		                <input 
+                        id='input-search'
+                        className={'imput-search-' + clase} 
+                        value={name}
                         type="text" 
                         placeholder="Search Game"
                         onChange={(e) => handleInputChange(e)}
                         >
                         </input>	
                         
-		                <button id='button-search' className={'button-search-' + clase} 
-                        type="submit"
+		                <button 
+                        id='button-search' 
+                        className={'button-search-' + clase} 
                         onClick={(e) => handleSearch(e)}
-                        value="name"
                         >
-                        Search
+                        Search:
                         </button>
 	                </form>
                 </div>

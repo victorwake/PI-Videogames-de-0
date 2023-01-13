@@ -2,52 +2,21 @@ require("dotenv").config();
 const { URL_API, API_KEY } = process.env;
 const axios = require('axios');
 const { Videogame, Genre } = require('../db.js');
-// const { allGames } = require('./gamesControllers.js');
-
-
-/*
-Creo un nuevo juego en la DB
-*/
-const postGame = async (req, res) => {
-    const { name, description, released, rating, platforms, genres, img } = req.body;
-    try {  
-            const newGame = await Videogame.create({
-            name, 
-            description, 
-            released, 
-            rating, 
-            platforms, 
-            img
-    });
-    let genreDb = await Genre.findAll({
-        where: {
-            name: genres,
-        },
-    });
-    await newGame.addGenre(genreDb);
-    res.status(200).send('The game was created successfully');
-    } catch (err) {
-        next(err);       
-    }
-};
-
-/*Fin de crear un nuevo juego en la DB*/
-
-/*
----------------------------------------------------------------------------------------------------------
-*/
-
 
 /*
 Busco un juego por ID
 */
-const getGameById = async (req, res) => {
+const getGameID = async (req, res) => {
     const { id } = req.params;
     if (id.length > 5){//si el id es mayor a 5 es un id de la base de datos, ya que la api solo tiene 5 digitos
         try {
             let apiDb = await Videogame.findOne({
-                where: { id },
-                include: Genre,
+                where: {id},
+                include: {
+                    model: Genre,
+                    attributes: ['name'],
+                    through: { attributes: [] }//para que no me traiga los atributos de la tabla intermedia
+                }
             });
             if (apiDb) {
                 let game = {
@@ -62,10 +31,10 @@ const getGameById = async (req, res) => {
                 };
                 res.status(200).send(game);
             } else {
-                res.status(404).send('Game not found');
+                res.status(404).send({msg: 'Game not found'});//uso el msg: para poder manejarlo en el front
             }
         } catch (error) {
-            res.status(404).send('Game not found');
+            res.status(404).send({ msg: 'The Videogame with that id was not found...' });//uso el msg: para poder manejarlo en el front
         }
     }else {
         try {
@@ -82,7 +51,7 @@ const getGameById = async (req, res) => {
             };
             res.status(200).send(game);
         } catch (error) {
-            res.status(404).send('Game not found');
+            res.status(404).send({ msg: 'The Videogame with that id was not found' });//uso el msg: para poder manejarlo en el front
         }
     }
 };
@@ -92,9 +61,60 @@ const getGameById = async (req, res) => {
 ---------------------------------------------------------------------------------------------------------
 */
 
+/*
+Creo un nuevo juego en la DB
+*/
+const postGame = async (req, res, next) => {//uso el next para poder manejar los errores en el middleware
+    const { name, description, released, rating, platforms, genres, img } = req.body;
+    try {  
+            const newGame = await Videogame.create({
+            name, 
+            description, 
+            released, 
+            rating, 
+            platforms, 
+            img
+    });
+    let genreDb = await Genre.findAll({
+        where: {
+            name: genres,
+        },
+    });
+    newGame.addGenre(genreDb);
+    res.status(201).send('The game was created successfully');//201 en una solicitud POST, significa que se creó un recurso
+    } catch (error) {
+        next(error);       
+    }
+};
+
+/*Fin de crear un nuevo juego en la DB*/
+
+/*
+---------------------------------------------------------------------------------------------------------
+*/
+
+/*Eliminar un juego de la DB*/
+
+const deleteGame = async (req, res, next) => {
+    const { id } = req.params;
+    try {
+        let gameDelete = await Videogame.findByPk(id)
+        gameDelete.destroy();
+        res.status(201).send("Videogame deleted correctly");
+    } catch (err) {
+        next(err)
+    }
+};
+
+/*Fin de eliminar un juego de la DB*/
+
+/*
+---------------------------------------------------------------------------------------------------------
+*/
+
 /*Update de un juego en la DB*/
 
-const updateGameOk = async (req,res,next) => {
+const putGame = async (req,res,next) => {
     try {
         let { id, name, img, released, rating, description, genres, platforms } = req.body;
         if( !name || !img || !released || !rating || !description || !generos || !platforms){
@@ -133,38 +153,11 @@ const updateGameOk = async (req,res,next) => {
 ---------------------------------------------------------------------------------------------------------
 */
 
-/*Eliminar un juego de la DB*/
 
-// const deleteGame = async (req, res, next) => {
-//     const { id } = req.params;
-//     try {
-//         let gameDelete = await Videogame.findByPk(id)
-//         gameDelete.destroy();
-//         res.status(201).send("Videogame deleted correctly");
-//     } catch (err) {
-//         next(err)
-//     }
-// };
-const deleteGame = async (req, res, next) => {
-    const { id } = req.params;
-
-    try {
-        await Videogame.destroy({ where: { id: id } });
-        res.send(id);
-    } catch (err) {
-        res.status(400).send(err);
-    }
-};
-
-/*Fin de eliminar un juego de la DB*/
-
-/*
----------------------------------------------------------------------------------------------------------
-*/
 
 module.exports = { 
     postGame,
-    getGameById,
-    updateGameOk,
+    getGameID,
+    putGame,
     deleteGame
     };

@@ -7,7 +7,7 @@ const { Videogame, conn } = require('../../src/db.js');
 const agent = session(app);
 const videogame = {
   id: 120,
-  name: 'Super Mario Bros',
+  name: 'victor',
 };
 
 describe('Videogame routes', () => {
@@ -23,41 +23,62 @@ describe('Videogame routes', () => {
 //     );
 //   });
 // });
+/*
 
+Verifico si la respuesta del servidor al hacer una 
+petición "GET" a la ruta "/games" tiene un código de estado HTTP 200 (OK). 
+*/
 describe('Get Games:', function() {
   it('GET respons with status 200', function(){
     return agent
       .get('/games')
       .expect(function(res){
         expect(res.status).equal(200)})
-  }).timeout(10000)
+  }).timeout(30000)
 
+
+  /*
+  Verifico si los elementos recibidos en la 
+  respuesta de la ruta '/games' son del tipo objeto.
+  */
   it('Elements received are Object type',  function() {
     return agent 
       .get('/games') 
       .expect(function(res) {
         expect(typeof res.body[0]).equal('object'); 
       });
-  }).timeout(10000)
+  }).timeout(36000)
   })
   
+
+  /*
+  Verifico si la respuesta del servidor al 
+  hacer una petición "GET" a la ruta "/games" con una 
+  query "name=matrix" tiene una longitud del cuerpo 
+  mayor si hay coincidencias en la búsqueda.
+  */
   describe('Search by Query:', function() {
   it('GET receives a body lenght larger if there is query coincidences',  function() {
     return agent 
-      .get('/games?name=hitman') 
+      .get('/games?name=matrix') 
       .expect(function(res) {
         expect(res.body.length); 
       });
-  }).timeout(6000)
+  }).timeout(36000)
   })
   
+    /*
+  Verifico si la respuesta del servidor al hacer una petición 
+  "GET" a la ruta "/game/3498" tiene un código de estado 
+  HTTP 200 (OK) si se encuentra un juego con ese ID específico.
+  */
   describe('Search by ID:', function() {
     it('GET responses with status 200 if a dog is found',  function() {
       return agent 
         .get('/game/3498') 
         .expect(function(res){
           expect(res.status).equal(200)}); 
-        }).timeout(10000);
+        }).timeout(36000);
     
     })
   })

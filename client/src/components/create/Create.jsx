@@ -74,6 +74,7 @@ export const CreateGame = () => {
     });
     navigate("/home"); // es el remplazo de useHistory en react 6
   };
+  
 
   const deleteChoice = (category, value) => {
     const newValues = input[category].filter((e) => e !== value);

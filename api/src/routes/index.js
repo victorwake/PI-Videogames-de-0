@@ -1,6 +1,5 @@
 const { Router } = require('express');
 const router = Router();
-require("dotenv").config();
 const  gamesRoutes = require('./gamesRoutes.js');
 const  gameRoutes= require('./gameRoutes.js');
 const  genresRoutes = require('./genresRoutes.js');

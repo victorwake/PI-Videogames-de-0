@@ -1,0 +1,29 @@
+/* .button-error{
+    position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+    cursor: pointer;
+    width: 150px;
+    height: 40px;
+    border-radius: 5px;
+    transition-duration: 01s;
+    transition-duration: 01s;
+    background-color: #333333;
+    color: rgb(194, 194, 194);
+    box-shadow: -3px -2px 8px rgb(0, 0, 0), 3px 2px 8px rgba(255, 255, 255, 0.178);
+} */
+
+/* .button-error:hover{
+    transition-duration: 01s;
+    color: rgba(176, 78, 78, 0.644);
+    box-shadow: -3px -2px 5px rgba(255, 0, 0, 0.295), 3px 2px 5px rgba(253, 99, 99, 0.301);
+} */
+
+.noFonund{
+  padding-top: 100px;;
+}
+
+.img{
+  margin-top:100px;
+}

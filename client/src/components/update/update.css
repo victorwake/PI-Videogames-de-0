@@ -1,0 +1,49 @@
+.condup1 { 
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 7px;
+    grid-row-gap: 7px; 
+}
+.imgbackup {
+    background: url(../../img/back_detail.png);
+    content: "";
+    position: fixed;
+    height: 90vh;
+    width: 20vw;
+    top: 4rem;
+    z-index: -10;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    z-index: 200;
+}
+.contup2 { 
+    height: 100%;
+    box-shadow: rgba(0, 0, 0, 0.7) 0px 0px 30px 0px;
+    position: fixed;
+    z-index: 100;
+    background: rgb(45, 45, 45);
+    
+}
+.contup3 {
+    grid-area: 1 / 2 / 6 / 6;
+    margin-top: 6rem;
+    padding: 2rem;
+}
+.contup4 {
+    border-radius: 2em;
+    padding-bottom: 6rem;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.13);
+    display: flex;
+    flex-direction: column;
+}
+.contizqup {
+    position: relative;
+    width: 40%;
+    left: 15rem;
+    top: 2rem;
+}

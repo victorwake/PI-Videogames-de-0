@@ -1,96 +1,109 @@
 import './searchBar.css';
-import { useSelector } from "react-redux";
-import {  getGameName } from "../../redux/action";
-import { useDispatch } from "react-redux";
+import { getGameByName,
+        changeGenresFilter, 
+        changeNameOrder, 
+        changePlatformsFilter, 
+        changeRatingOrder, 
+        changeTypeFilter, 
+        changeSearchGame, 
+        cleanStateByName 
+}  from "../../redux/action";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
+// import { Filters } from '../filters/Filters';
+// import { SetFilters } from "../setFilters/SetFilters";
 
 
-export function SearchBar() {
+export const SearchBar = () => {
     const clase= useSelector(store => store.theme);
     const dispatch = useDispatch();
-    // const [order, setOrder] = useState('');
+    const genresFilter = useSelector(state => state.genresFilter);
+    const platformsFilter = useSelector(state => state.platformsFilter);
+    const typeFilter = useSelector(state => state.typeFilter);
+    const nameOrder = useSelector(state => state.nameOrder);
+    const ratingOrder = useSelector(state => state.ratingOrder);
+    const gameByName = useSelector(state => state.gameByName);
+    const searchGame = useSelector(state => state.searchGame);
     
     /* Buscar por nombre
     ------------------------------------------------------*/
-    const [name, setName] = useState('');
+    const [input, setInput] = useState('');
     const [button, setButton] = useState('');
 
-    function handleSearch(e) {
-        e.preventDefault();
-        dispatch(getGameName(name));
-        setName('');
-        
+
+    const handleInputChange = e => {
+        setInput(e.target.value);
+        setButton(e.target.value);
+    };
+
+    const cleanFilters = () => {
+        if(genresFilter !== '') dispatch(changeGenresFilter(''));
+        if(platformsFilter !== '') dispatch(changePlatformsFilter(''));
+        if(typeFilter !== '') dispatch(changeTypeFilter(''));
+        if(nameOrder !== '') dispatch(changeNameOrder(''));
+        if(ratingOrder !== '') dispatch(changeRatingOrder(''));
     }
 
-    function handleInputChange(e) {
-        setName(e.target.value);
-        setButton(e.target.value);
-        
+    const handleSubmit = e => {
+        e.preventDefault();
+        setInput('');
+        if(input) { // sino despacharia la accion de busqueda sin valor
+            dispatch(getGameByName(input));
+            dispatch(changeSearchGame(true));
+            cleanFilters()
+        }
+    };
+
+    const handleClick = () => {
+        setButton('')
+        dispatch(cleanStateByName([]))
+        dispatch(changeSearchGame(false));
+        cleanFilters()
     }
-    /*Fin Buscar por nombre
-    ------------------------------------------------------*/
+
+    let disabled = false
+    if(!!gameByName.length && searchGame) disabled = true
+
 
 
     return (
-        <div className={'conteiner-search-' + clase}>
-            <div className={'conteiner-select-' + clase}>
-                {/* <h5 className={'h5-' + clase}>Filter by:</h5> */}
-                {/* <select className={'select-' + clase} >
-                    <option value= '' disabled>Genre</option>
-                    <option value='all'>All Genres</option>
-                </select> */}
-                {/* <select className={'select-' + clase}>
-                    <option value= '' disabled>Platforms</option>
-                    <option value='all'>All Platforms</option>
-                </select> */}
-                {/* <select className={'select-' + clase} >
-                    <option value= '' disabled>Type</option>
-                    <option value= 'all'>All Types</option>
-                    <option value= 'created'>Created</option>
-                    <option value= 'existing'>Existing</option>
-                </select> */}
-            </div>
-            <div className={'conteiner-select-' + clase}>
-                {/* <h5 className={'h5-' + clase}>Order by:</h5> */}
-                {/* <select className={'select-' + clase} >
-                    <option value= '' disabled>Name</option>
-                    <option value= 'asc'>A - Z</option>
-                    <option value= 'desc'>Z - A</option>
-                </select> */}
-                {/* <select className={'select-' + clase}>
-                    <option value= '' disabled>Rating</option>
-                    <option value= 'best rating'>Best Rating</option>
-                    <option value= 'worst rating'>Worst Rating</option>
-                </select> */}
-                {/* <select className={'select-' + clase}>
-                    <option value= '' disabled>Released</option>
-                    <option value= 'best released'>Best Released</option>
-                    <option value= 'worst released'>Worst Released</option>
-                </select> */}
-            </div>
-            
+        <form onSubmit={handleSubmit}>
+            {/* <Filters /> */}
+            <div className={'conteiner-search-' + clase}>
+                
+                <div className={'conteiner-select-' + clase}>
+                
+                {/* <SetFilters />  */}
+                </div>
+                {/* <div className={'conteiner-select-' + clase}>
+                
+                </div> */}
                 <div>
-	                <form className={'form-search-' + clase} action="" method="">	
-
+	                <form className={'form-search-' + clase}>	
 		                <input 
                         id='input-search'
                         className={'imput-search-' + clase} 
-                        value={name}
                         type="text" 
-                        placeholder="Search Game"
-                        onChange={(e) => handleInputChange(e)}
+                        laceholder='Search Game'
+                        onChange={handleInputChange}
+                        value={input}
+                        maxLength= '30'
+                        disabled = {disabled}
                         >
                         </input>	
-                        
+                        {/* {disabled &&  */}
 		                <button 
                         id='button-search' 
                         className={'button-search-' + clase} 
-                        onClick={(e) => handleSearch(e)}
+                        onClick={handleClick}
                         >
                         Search:
                         </button>
+                        {/* } */}
+                        {!!button.length && !!gameByName.length && <span className="span">✓ your search: {button}</span>}
 	                </form>
                 </div>
-        </div>
+            </div>
+        </form>
     )
 }

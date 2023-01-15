@@ -5,8 +5,8 @@ module.exports = (sequelize) => {
         name: {
             type: DataTypes.STRING,
             allowNull: false,
-        }
+        },
     },{
-        timestamps: false
+        timestamps: false,
     });
-}; // el id lo pone por defecto la bd
+};

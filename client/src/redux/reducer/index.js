@@ -1,36 +1,51 @@
 import { nameASC } from '../../helpers/sort.js';
-import {
-    THEME_CHANGE, 
-    THEME_LIGHT, 
-    THEME_DARK,
-    GET_GAMES,
-    FILTER_GAMES_BY_GENRE,
-    FILTER_GAMES_BY_PLATFORM,
-    ORDER_BY_AZ,
-    GET_GAME_NAME,
-    GET_GENRES,
-    POST_GAME,
-    GET_PLATFORMS,
-    GET_GAME_BY_ID,
-    CLEAN_DETAILS,
-    FILTER_GAME_API_OR_DB,
-    DELETE_VIDEOGAME, 
-    LOAD_ALL_GAME
 
-        } from '../action/index.js';
+import {
+        THEME_CHANGE, 
+        THEME_LIGHT, 
+        THEME_DARK,
+        GET_GAMES, 
+        GET_GENRES, 
+        GENRE_FILTER, 
+        TYPE_FILTER, 
+        CURRENT_PAGE, 
+        RESET_PAGE, 
+        NAME_ORDER, 
+        RATING_ORDER, 
+        GET_PLATFORMS, 
+        PLATFORMS_FILTER, 
+        GET_GAME_DETAIL,
+        GET_GAME_BY_NAME, 
+        CLEAN_STATE_BY_NAME, 
+        SEARCH_GAME, USE_FILTER, 
+        CLEAN_ALL_FILTERS, 
+        CLEAN_DETAIL, 
+        GAME_UPDATE, 
+        PI 
+} from '../action/index.js';
 
 const initialState = {
     theme: 'dark',
-    games: [],
+    currentPage: 1,
     allGames: [],
     genres: [],
     platforms: [],
-    details: [],
-    loadAllGames: true,
+    gameByName: [],
+    searchGame: false,
+    useFilter: false,
+    gameDetail: {},
+    gameUpdate: {},
+    genresFilter: '',
+    platformsFilter: '',
+    typeFilter: '',
+    nameOrder:'',
+    ratingOrder: '',
+    released: ''
 };
 
-function rootReducer(state = initialState, action){
+export const rootReducer = (state = initialState, action) => {
     switch(action.type) {
+
         case THEME_CHANGE:
             return {
                 ...state,
@@ -48,122 +63,110 @@ function rootReducer(state = initialState, action){
             };
 
         /* Traigo todos los juegos */    
-        case GET_GAMES:    
+        case GET_GAMES:
             return {
                 ...state,
-                games: action.payload,
-                allGames: action.payload,
-                loadAllGames: false,
-            };
-
-        /* Filtrar por genero */
-        case FILTER_GAMES_BY_GENRE:   
-            const allGames = state.allGames;
-            const genreFilter = action.payload === 'All'
-                ? allGames 
-                : allGames.filter((g) => g.genres.includes(action.payload));
-            return {
-                ...state,
-                games: genreFilter
-            };
-
-        /* Filtrar por plataforma */
-        case FILTER_GAMES_BY_PLATFORM:
-            const allGames2 = state.allGames;   
-            const platformFilter = action.payload === 'All'
-                ? allGames2
-                : allGames2.filter((g) => g.platforms.includes(action.payload));
-            return {
-                ...state,
-                games: platformFilter
-            };
-
-        /* Ordenar por nombre */
-            case ORDER_BY_AZ:
-                const videogames = [...state.games];
-                const orderAZ =
-                action.payload === 'All'
-                    ? videogames
-                    : action.payload === 'asc'
-                    ? videogames.sort((a, b) =>
-                        a.name.toUpperCase() > b.name.toUpperCase() ? 1 : -1
-                    )
-                    : videogames.sort((a, b) =>
-                        a.name.toUpperCase() > b.name.toUpperCase() ? -1 : 1
-                    );
-                return {
-                    ...state,
-                    games: orderAZ,
-                };  
-            
-        /* Buscar por nombre */
-        case GET_GAME_NAME:
-            return {
-                ...state,
-                games: action.payload,
-            };
-
-        /* Traigo todos los generos */
+                allGames: action.payload
+            }
         case GET_GENRES:
             return {
                 ...state,
                 genres: action.payload.sort(nameASC)
             }
-
-        case POST_GAME:
-            return {
-                ...state,
-            }
-
         case GET_PLATFORMS:
             return {
                 ...state,
                 platforms: action.payload.sort(nameASC)
+            }
+        case GET_GAME_BY_NAME:
+            return {
+                ...state,
+                gameByName: action.payload
+            }
+        case SEARCH_GAME:
+            return {
+                ...state,
+                searchGame: action.payload
+            }
+        case USE_FILTER:
+            return {
+                ...state,
+                useFilter: action.payload
+            }
+        case GET_GAME_DETAIL:
+            return {
+                ...state,
+                gameDetail: action.payload
+            }
+        case GENRE_FILTER:
+            return {
+            ...state,
+            genresFilter: action.payload
+            }
+        case PLATFORMS_FILTER:
+            return {
+            ...state,
+            platformsFilter: action.payload
             }    
-        
-        case GET_GAME_BY_ID:
+        case TYPE_FILTER:
             return {
-                ...state,
-                details: action.payload
+            ...state,
+            typeFilter: action.payload
             }
-
-            /* Limpio el details */
-        case CLEAN_DETAILS:
+        case NAME_ORDER:
             return {
-                ...state,
-                details: action.payload
+            ...state,
+            nameOrder: action.payload
             }
-
-        case FILTER_GAME_API_OR_DB:
-            const gamesStatus = state.allGames;
-            const filterStatus = action.payload === 'All'
-                ? gamesStatus
-                :action.payload === 'created'
-                ? gamesStatus.filter((g) => g.id.length > 5)
-                : gamesStatus.filter((g) => !g.createdInDb);
+        case RATING_ORDER:
+            return {
+            ...state,
+            ratingOrder: action.payload
+            }
+            case CURRENT_PAGE:
+                return {
+                ...state,
+                currentPage: action.payload
+            }    
+        ///////////////////////////////    
+        case CLEAN_ALL_FILTERS:
             return {
                 ...state,
-                games: filterStatus
-            };
-            case DELETE_VIDEOGAME:
-                return {
-                    ...state,
-                    games: state.games.filter(
-                    (game) => game.id !== action.payload
-                    ),
-
-                    allGames: state.allGames.filter(
-                    (game) => game.id !== action.payload
-                ),
-            };
-
-            case LOAD_ALL_GAME:
-                return {
-                    ...state,
-                    loadAllGames: action.payload,
-            };
-                
-            
+                currentPage: 1,
+                gameByName: [],
+                searchGame: false,
+                useFilter: false,
+                genresFilter: '',
+                platformsFilter: '',
+                typeFilter: '',
+                nameOrder:'',
+                ratingOrder: ''
+            }
+        case CLEAN_STATE_BY_NAME:
+            return {
+            ...state,
+            gameByName: action.payload
+            }
+        case RESET_PAGE:
+            return {
+            ...state,
+            currentPage: action.payload
+            }
+        case CLEAN_DETAIL:
+            return {
+                ...state,
+            gameDetail: action.payload
+            }
+        case GAME_UPDATE:
+            return {
+                ...state,
+                gameUpdate: action.payload
+            }
+        case PI:
+            return {
+                ...state,
+                released: action.payload
+            }
         default:
             return state;
     }

@@ -1,7 +1,16 @@
+
+.h5 {
+    color: rgb(176, 78, 78);
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px
+}
+
 /* Modo light end */
 
-.home-container-light{
-    height: 100vh;
+.filter-container-light{
+    overflow: hidden;
     padding-top: 8px;
     transition-duration: 01s;
     background-color: rgb(224, 224, 224);
@@ -15,54 +24,20 @@
     color: #333333;
 }
 
-.card-container-light{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 230px);
-    align-items: center;
-    justify-content: center;
-}
-
-.card-light{
-    width: 300px;
-    height: 350px;
-    border-radius: 8px;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition-duration: 01s;
-    background-color: rgb(224, 224, 224);
-    box-shadow: 0 0 10px rgb(0, 0, 0);
-}
-
-.pagination-container-light{
-    transition-duration: 01s;
-    background-color: rgb(224, 224, 224);
-}
-
-.pagination-container-botoon-light{
-    display: flex;
-    justify-content: center;
-    padding-top: 30px;
-    transition-duration: 01s;
-    background-color: rgb(224, 224, 224);
-}
-
-.filter-container-light{
-    display: flex;
-    justify-content: center;
+.filter-box-light{
+    /* float: right; */
     padding: 30px;
     transition-duration: 01s;
     background-color: rgb(224, 224, 224);
 }
 
-.select-home-light{
+.select-filter-light{
     margin: 7px;
     padding: 4px;
     border-radius: 5px;
     border: none;
     transition-duration: 01s;
+    color: #333333;
     background-color: rgb(224, 224, 224);
     box-shadow: -5px -5px 10px rgba(94, 104, 121, 0.486), 5px 3px 8px rgb(255, 255, 255);
 }
@@ -92,6 +67,7 @@
     width:100%;
 }
 
+
 /* Modo light fin */
 
  /* --------------------------------------------------------- */
@@ -99,8 +75,9 @@
 
 /*Modo Dark*/
 
-.home-container-dark{
-    height: 100vh;
+.filter-container-dark{
+    
+    overflow: hidden;
     padding-top: 8px;
     transition-duration: 01s;
     background-color: #333333;
@@ -115,52 +92,15 @@
     color: rgb(255, 255, 255);
 }
 
-.card-container-dark{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 230px);
-    align-items: center;
-    justify-content: center;
-}
+.filter-box-dark{
 
-.card-dark{
-    width: 300px;
-    height: 350px;
-    border-radius: 8px;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition-duration: 01s;
-    background-color: #333333;
-    box-shadow: 0 0 10px rgb(0, 0, 0);
-}
-
-
-    
-.pagination-container-dark{
-    transition-duration: 01s;
-    background-color: #333333;
-}
-    
-.pagination-container-botoon-dark{
-    display: flex;
-    justify-content: center;
-    padding-top: 30px;
-    transition-duration: 01s;
-    background-color: #333333;
-}
-
-.filter-container-dark{
-    display: flex;
-    justify-content: center;
+    /* float: left; */
     padding: 30px;
     transition-duration: 01s;
     background-color: #333333;
 }
 
-.select-home-dark{
-    
+.select-filter-dark{
     margin: 7px;
     padding: 4px;
     border-radius: 5px;
@@ -189,7 +129,6 @@
     box-shadow: -3px -2px 5px rgba(255, 0, 0, 0.2), 3px 2px 5px rgba(253, 99, 99, 0.1);
 }
 
-
 .footer-home-dark{
     /* position: relative; */
     left:0px;
@@ -197,20 +136,7 @@
     width:100%;
 }
 
-
-
 /* Modo dark fin */
 
-
-h1{
-    font-size: 50px;
-    padding-top: 100px;
-    
-}
-
-link {
-    text-decoration: none;
-    
-}
 
 

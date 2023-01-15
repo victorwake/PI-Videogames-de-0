@@ -1,47 +1,75 @@
 import "./create.css";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  postGame,
-  getPlatforms,
-  getGenres,
-  getGames,
-} from "../../redux/action";
+import { getPlatforms, cleanAllFilters, getGenres, getGames } from "../../redux/action";
 import { Footer } from "../footer/Footer";
 import { Nav } from "../nav/Nav";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";// es el remplazo de useHistory en react 6
 import imgDefault from "../../img/default.jpg";
+import { formControl } from '../../helpers/formControl';
+import { postGame } from '../../helpers/postGame';
 
 export const CreateGame = () => {
+  
   const dispatch = useDispatch();
   const clase = useSelector((store) => store.theme);
-  const platforms = useSelector((state) => state.platforms);
-  const genres = useSelector((state) => state.genres);
   const navigate = useNavigate(); // es el remplazo de useHistory en react 6
+  const allGames = useSelector(state => state.allGames);
+  const genres = useSelector(state => state.genres);
+  const platforms = useSelector(state => state.platforms);
+  const [errText, seterrText] = useState({});  
 
   const [input, setInput] = useState({
-    name: "",
-    img: "",
-    released: "",
-    rating: "",
-    platforms: [],
+    name: '',
+    img: '',
+    description: '',
+    released: '',
+    rating: '',
     genres: [],
-    description: "",
+    platforms: [],
   });
 
-  const [errors, setErrors] = useState({});
+  //verifico si los componentes ya estan cargados en el store
+  if(!allGames.length && !genres.length && !platforms.length) {
+    dispatch(getGames());
+    dispatch(getGenres());
+    dispatch(getPlatforms());
+  }
 
-  useEffect(() => {
-    if (!platforms.length) dispatch(getPlatforms());
-    if (!genres.length) dispatch(getGenres());
-  }, [dispatch]);
-
-  const handleChange = (e) => {
+  const handleChange = e => {
     setInput({
       ...input,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     });
-  };
+    seterrText(formControl({
+      ...input,
+      [e.target.name]: e.target.value
+    }));
+  }
+
+
+  // const handleCheck = (e) => {
+  //   const value = e.target.value
+  //   if (!input[e.target.name].includes(value)) {
+  //     setInput({
+  //       ...input,
+  //       [e.target.name]: [...input[e.target.name], value]
+  //     });
+  //     seterrText(formControl({
+  //       ...input,
+  //       [e.target.name]: [...input[e.target.name], value]
+  //     }));
+  //   } else {
+  //     setInput({
+  //       ...input,
+  //       [e.target.name]: input[e.target.name].filter(n => n !== value)
+  //     });
+  //     seterrText(formControl({
+  //       ...input,
+  //       [e.target.name]: input[e.target.name].filter(n => n !== value)
+  //     }));
+  //   }    
+  // };
 
   const handleSelectGenre = (e) => {
     setInput({
@@ -57,136 +85,100 @@ export const CreateGame = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+
+  const handleSubmit = e => {
     e.preventDefault();
-    if (!input.img) input.img = imgDefault;
-    dispatch(postGame(input));
+    if(!input.img.length) input.img = imgDefault
+    postGame(input);
+    dispatch(cleanAllFilters());
     dispatch(getGames());
+    navigate("/setgame"); // es el remplazo de useHistory en react 6
 
-    setInput({
-      name: "",
-      img: "",
-      released: "",
-      rating: "",
-      platforms: [],
-      genres: [],
-      description: "",
-    });
-    navigate("/home"); // es el remplazo de useHistory en react 6
-  };
-  
-
-  const deleteChoice = (category, value) => {
-    const newValues = input[category].filter((e) => e !== value);
-    setInput({
-      ...input,
-      [category]: newValues,
-    });
-    setErrors(
-      validate({
-        ...input,
-        [category]: newValues,
-      })
-    );
+    //const disabled = Object.keys(errText).length || !input.name // para que se pueda mandar tiene que ser false
   };
 
-  const validate = (input) => {
-    let errors = {};
-    if (!input.name) errors.name = "Name is required";
-    else if (!/^[^@#$%^&]+$/.test(input.name))
-      errors.name = "Name must not contain special characters (@#$%^&)";
-    if (!input.description) errors.description = "Description is required";
-    if (!input.genres.length)
-      errors.genres = "You must select at least one genre";
-    if (
-      input.released &&
-      !/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/.test(input.released)
-    )
-      errors.released = "Release date must be in the format yyyy-mm-dd";
-    if (input.rating < 0 || input.rating > 5)
-      errors.rating = "Rating must be a number between 0 and 5";
-    if (input.image && !/^(ftp|http|https):\/\/[^ "]+$/.test(input.image))
-      errors.image = "Image URL must have a valid URL format (http/https/ftp)";
-    else if (input.image && !/(\.|=)(jpg|png|gif)$/i.test(input.image))
-      errors.image = "Image URL must have a valid image format (jpg/png/gif)";
-    if (!input.platforms.length)
-      errors.platforms = "You must select at least one platform";
-    return errors;
-  };
+const deleteChoice = (category, value) => {
+  const newValues = input[category].filter((e) => e !== value);
+  setInput({
+    ...input,
+    [category]: newValues,
+  });
+};
+
+
+
+
+
+
+
+
+const disabled = Object.keys(errText).length || !input.name // para que se pueda mandar tiene que ser false
 
   return (
     <div className={"create-container-" + clase}>
       <Nav />
+
       <div>
+
         <div className={"container-create-" + clase}>
+
+
           <form
-            onSubmit={(e) => handleSubmit(e)}
+            onSubmit={handleSubmit}
             className={"container-create-form-" + clase}
           >
+
             <div className={"container-create-title-" + clase}>
               <h3 className={"title-create-" + clase}>
                 🎮 Create your own video game! 🎮
               </h3>
             </div>
+
+
+
+
             <div class="containerCreateBody">
               <div class="columnsForm">
                 <div>
-                  <label
-                    id="fontBodyCreate"
-                    className={"block-create-" + clase}
-                  >
-                    Name:{" "}
-                  </label>
+                  <label id="fontBodyCreate" className={"block-create-" + clase}>Name:</label>
                   <input
                     className={"inputName-" + clase}
                     autocomplete="off"
                     type="text"
                     maxLength="30"
-                    value={input.name}
-                    name="name"
-                    onChange={(e) => handleChange(e)}
+                    name='name' value={input.name}
+                    onChange={handleChange}
                   />
-                  {errors.name && (
-                    <span className="fontErrorsCreate">{errors.name}</span>
-                  )}
+                  {errText.name && <span className="fontErrorsCreate" >》》 {errText.name}</span>}
                 </div>
                 <br />
 
+
+
+
                 <div>
-                  <label
-                    id="fontBodyCreate"
-                    className={"block-create-" + clase}
-                  >
-                    Description:{" "}
-                  </label>
+                  <label id="fontBodyCreate" className={"block-create-" + clase}>Description:</label>
                   <textarea
-                    name="description"
                     className={"inputDescription-" + clase}
                     autocomplete="off"
                     type="text"
                     maxLength="500"
-                    value={input.description}
-                    onChange={(e) => handleChange(e)}
+                    name='description' value={input.description} 
+                    onChange={handleChange}
                   ></textarea>
-                  {errors.description && (
-                    <span className="fontErrorsCreate">
-                      {errors.description}
-                    </span>
-                  )}
+                  {errText.description && <span  className='redspan'>》》 {errText.description}</span>}
                 </div>
                 <br />
 
+
+
+
+
                 <div>
-                  <label
-                    id="fontBodyCreate"
-                    className={"block-create-" + clase}
-                  >
-                    Genres:{" "}
-                  </label>
+                  <label id="fontBodyCreate" className={"block-create-" + clase}>Genres:{errText.genres && <span  className='redspan'>》》 {errText.genres}</span>}     </label>
                   <select
                     id="selectGenreCreate"
                     name="genres"
-                    // multiple={true}
                     value={input.genres}
                     defaultValue="select"
                     onChange={(e) => handleSelectGenre(e)}
@@ -263,41 +255,39 @@ export const CreateGame = () => {
                           return <div></div>;
                         })}
                     </div>
-                    {errors.genres && (
-                      <span className="fontErrorsCreate">{errors.genres}</span>
+                    {errText.genres && (
+                      <span className="fontErrorsCreate">{errText.genres}</span>
                     )}
                   </div>
                 </div>
               </div>
 
+
+
+
+
+
               <div class="columnsForm">
                 <div>
-                  <label
-                    id="fontBodyCreate"
-                    className={"block-create-" + clase}
-                  >
-                    Release date:{" "}
-                  </label>
+                  <label id="fontBodyCreate" className={"block-create-" + clase}>Release date:</label>
                   <input
                     className={"inputRelease-"+ clase}
                     type="date"
-                    value={input.released}
-                    name="released"
-                    onChange={(e) => handleChange(e)}
+                    name='released' value={input.released}
+                    onChange={handleChange}
                   />
-                  {errors.released && (
-                    <span className="fontErrorsCreate">{errors.released}</span>
-                  )}
+                  {errText.released && <span  className="fontErrorsCreate">》》 {errText.released}</span>}
                 </div>
                 <br />
 
+
+
+
+
+
+
                 <div>
-                  <label
-                    id="fontBodyCreate"
-                    className={"block-create-" + clase}
-                  >
-                    Rating:{" "}
-                  </label>
+                  <label id="fontBodyCreate" className={"block-create-" + clase}>Rating:</label>
                   <input
                     className={"inputRating-" + clase}
                     autocomplete="off"
@@ -305,45 +295,40 @@ export const CreateGame = () => {
                     step="0.1"
                     min="0"
                     max="5"
-                    value={input.rating}
-                    name="rating"
-                    onChange={(e) => handleChange(e)}
+                    name="rating" value={input.rating} 
+                    onChange={handleChange}
                   />
-                  {errors.rating && (
-                    <span className="fontErrorsCreate">{errors.rating}</span>
-                  )}
+                  {errText.rating && <span className="fontErrorsCreate" >》》 {errText.rating}</span>}
                 </div>
                 <br />
 
+
+
+
                 <div>
-                  <label
-                    id="fontBodyCreate"
-                    className={"block-create-" + clase}
-                  >
-                    Image URL:{" "}
-                  </label>
+                  <label id="fontBodyCreate" className={"block-create-" + clase}>Image URL:</label>
                   <input
                     className={"inputImgURL-" + clase}
                     autocomplete="off"
                     type="text"
-                    value={input.img}
-                    name="img"
-                    placeholder="url..."
-                    onChange={(e) => handleChange(e)}
+                    placeholder= 'url...'
+                    name='img' value={ input.img }
+                    onChange={handleChange}
                   />
                 </div>
-                {errors.image && (
-                  <span className="fontErrorsCreate">{errors.image}</span>
-                )}
+                {errText.img && <span  className='redspan'>》》 {errText.img}</span>}
                 <br />
 
+
+
+
+
+
+
+
+
                 <div>
-                  <label
-                    id="fontBodyCreate"
-                    className={"block-create-" + clase}
-                  >
-                    Platforms:{" "}
-                  </label>
+                  <label id="fontBodyCreate" className={"block-create-" + clase}>Platforms:{errText.platforms && <span  className='redspan'>》》 {errText.platforms}</span>}   </label>
                   <select
                     className="selectPlatformCreate"
                     name="platforms"
@@ -424,8 +409,8 @@ export const CreateGame = () => {
                           return <div></div>;
                         })}
                     </div>
-                    {errors.platforms && (
-                    <span className="fontErrorsCreate">{errors.platforms}</span>
+                    {errText.platforms && (
+                    <span className="fontErrorsCreate">{errText.platforms}</span>
                   )}
                   </div>
                   </div>
@@ -433,18 +418,30 @@ export const CreateGame = () => {
                 </div>
               </div>
             </div>
+
+
             <div class="containerButtonCreate">
               <button
                 type="submit"
-                disabled=""
+                value='Create'
+                disabled={disabled}
                 className={"create-disable-" + clase}
               >
                 Create
               </button>
+
+
             </div>
           </form>
         </div>
       </div>
+
+
+
+
+    <div class="footer-create">
+    <Footer />
+    </div>
     </div>
   );
 };

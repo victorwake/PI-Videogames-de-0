@@ -1,32 +1,17 @@
 import './landingPage.css';
-import { useEffect } from 'react';
 import { Link } from "react-router-dom";
 import React, { useState } from 'react';
-import { useDispatch } from "react-redux";
 import imgFound  from '../../img/gamer.png'
-import * as actions from '../../redux/action/index';
-import { getGames, getGenres, getPlatforms } from '../../redux/action/';
-import { useSelector } from "react-redux";
+
+
 
 
 
 
 export function LandingPage() {
 
-    const dispatch = useDispatch();
     const [imageEffect, setImageEffect] = useState(false); 
-    const allGames = useSelector(state => state.games);
-    const genres = useSelector(state => state.genres);
-    const platforms = useSelector(state => state.platforms);
 
-
-    useEffect(() => {      
-        dispatch(actions.themeChange('dark'));
-        if(!allGames.length) dispatch(getGames());
-        if(!genres.length) dispatch(getGenres())
-        if(!platforms.length) dispatch(getPlatforms());
-
-    }, [])// eslint-disable-line react-hooks/exhaustive-deps
 
     const handleMouseHover = () => {
         setImageEffect(true); 

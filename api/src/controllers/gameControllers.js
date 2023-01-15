@@ -114,38 +114,28 @@ const deleteGame = async (req, res, next) => {
 
 /*Update de un juego en la DB*/
 
-const putGame = async (req,res,next) => {
+const putGame = async (req, res, next) => {
+
+    const {id} = req.params
+    let {name, img, description, released, rating, genres, platforms} = req.body
+    let str = ''
+    description = str.concat('<p>' + description + '<p>')
+
     try {
-        let { id, name, img, released, rating, description, genres, platforms } = req.body;
-        if( !name || !img || !released || !rating || !description || !generos || !platforms){
-            return res.status(400).send({error:"Missing info"});
-        }else{
-            let modifieldGame = await updateGame({id, name, img, released, rating, description, genres, platforms});
-        
-            return res.status(200).send(modifieldGame);
-        }
-        
+        const game = await Videogame.findByPk(id)
+        await game.update({name, img, description, released, rating, platforms})
+        const gameGenre = await game.getGenres()
+        await game.removeGenres(gameGenre)
+        let arrPromises = genres.map(e => (
+            Genre.findOne({where: {name: e}})
+            .then(res => game.addGenre(res))
+        ))
+        await Promise.all(arrPromises)
+        res.status(201).send("Videogame updated correctly");
     } catch (error) {
-        console.log(error);
-        return res.status(400).send("Error");
-        
+        next(error)
     }
-    };
-    
-    const updateGame = async ({id, name, img, released, rating, description, genres, platforms}) => {
-        let game = await Videogame.findByPk(id);
-        if(!game) return {error:"Game not found"};
-    
-        
-        game.name = name;
-        game.img = image;
-        game.released = released;
-        game.rating = rating;
-        game.description = description;
-        game.genres = genres;
-        game.platforms = platforms;
-        return game;
-    };
+};
 
 /*Fin de update de un juego en la DB*/
 

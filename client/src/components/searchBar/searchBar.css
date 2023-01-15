@@ -68,11 +68,11 @@
 }
 
 .conteiner-select-light{
+	margin-left: 10px;
 	transition-duration: 01s;
 	background-color: rgb(224, 224, 224);
 	color: #333333;;
-	margin-left: 10px;
-	
+
 }
 
 .select-light{
@@ -113,13 +113,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+	margin-right: 30px;
     margin-top: 20px;
     margin-bottom: 20px;
 	display: inline-block;
 	position: relative;
 	z-index: 1;
     transition-duration: 01s;
-    margin-right: 30px;
     background-color: #333333;
     
 }
@@ -148,12 +148,13 @@
 }
 
 .button-search-dark{
+	
+	border-radius: 0 5px 5px 0;
     transition-duration: 01s;   
     background:rgb(26, 24, 24);
 	background: linear-gradient(#333, #222);
 	border: 1px solid #444;
 	border-left-color: #000;
-	border-radius: 0 5px 5px 0;
 	box-shadow: 0 2px 0 #000;
 	color: #fff;
 }
@@ -195,13 +196,6 @@
 /* Modo dark fin */
 
 
-.form-search-dark{
-	display: inline-block;
-	font-size: 0px;
-	position: relative;
-	z-index: 1;
-}
-
 #input-search {
 	border-radius: 5px 0 0 5px;
 	display: block;
@@ -209,7 +203,7 @@
 	font-family: 'Cabin', helvetica, arial, sans-serif;
 	font-size: 13px;
 	font-weight: 400;
-	height: 30px;
+	height: 28px;
 	margin: 0;
 	padding: 0 10px;
 	width: 200px;

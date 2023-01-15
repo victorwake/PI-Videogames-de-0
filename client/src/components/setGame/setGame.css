@@ -1,0 +1,156 @@
+.condet1 { 
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 7px;
+    grid-row-gap: 7px; 
+}
+.imgback {
+    content: "";
+    position: fixed;
+    height: 90vh;
+    width: 20vw;
+    top: 4rem;
+    z-index: -10;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    z-index: 200;
+
+}   
+.contdet2 { 
+    height: 100%;
+    box-shadow: rgba(0, 0, 0, 0.7) 0px 0px 30px 0px;
+    position: fixed;
+    z-index: 100;
+    background: rgb(45, 45, 45);
+    
+}
+
+.contdet3 {
+    grid-area: 1 / 2 / 6 / 6;
+    margin-top: 6rem;
+    padding: 2rem;
+}
+.contdet4 {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-left: 42rem;
+    padding-right: 1rem;
+    text-align:left;
+    border-radius: 2em;
+    padding-bottom: 50rem;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.162);
+}
+
+.pagdet {
+    align-items: center;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    background: rgb(53, 48, 48);
+    height: 80px;
+}
+
+.slidesdet {
+    position: fixed;
+    width: 100%;
+    background: rgb(53, 48, 48);
+    height: 80px;
+}
+
+
+.stardet {
+    font-size: 1.5rem;
+    padding-right: 1rem;
+    padding-top: .3rem;
+}
+
+.deth3 {
+    font-size: .9rem;
+    padding-top: .5rem;
+    margin: 0;
+}
+
+.detname {
+    font-size: 2rem;
+    padding-top: 13rem;
+    margin: 0;
+    color: rgb(218, 118, 118);
+}
+
+.divdet {
+    display: flex;
+    flex-direction: row;
+    line-height: 1.7rem;
+}
+
+.divdet2{
+    display: flex;
+    flex-direction: row;
+    line-height: 1.7rem;
+    top: 42rem;
+    padding-left: 4rem;
+    padding-right: 10rem;
+    position: absolute;
+}
+
+.imgdet {
+    position: absolute;
+    top: 4rem;
+    left: 4rem;
+    border-radius: 1rem;
+    object-fit: cover;
+    width: 30vw;
+    height: 50vh;
+    box-shadow: rgba(0, 0, 0, 0.979) 0px 0px 50px 0px;
+}
+
+.detbut {
+    position: absolute;
+    top:9rem;
+    left: 30rem;
+    font-size: .9rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5rem;
+    height: 2rem;
+    background-color: transparent;
+    border-radius: 0.5rem;
+    border-color: rgb(176, 78, 78);
+    box-shadow: rgba(176, 78, 78, 0.7) 0px 0px 30px 0px;
+    cursor: pointer;
+    list-style: none;
+    color: rgb(243, 156, 156);
+    border-radius: 6px 6px 6px 6px; 
+}
+.detbut:hover {
+    color:white;
+    background-color: rgba(255, 255, 255, 0.183)
+}
+
+.detbut1 {
+    position: absolute;
+    top:9rem;
+    left: 36rem;
+    font-size: .9rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5rem;
+    height: 2rem;
+    background-color: transparent;
+    border-radius: 0.5rem;
+    border-color: rgb(176, 78, 78);
+    box-shadow: rgba(176, 78, 78, 0.7) 0px 0px 30px 0px;
+    cursor: pointer;
+    list-style: none;
+    color: rgb(243, 156, 156);
+    border-radius: 6px 6px 6px 6px; 
+}
+

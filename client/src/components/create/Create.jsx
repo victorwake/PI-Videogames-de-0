@@ -88,7 +88,7 @@ const handleSubmit = e => {
   postGame(input);
   dispatch(cleanAllFilters());
   dispatch(getGames());
-  navigate("/SetGame"); // es el remplazo de useHistory en react 6
+  navigate("/setGame"); // es el remplazo de useHistory en react 6
 };
 
 
@@ -155,7 +155,7 @@ const disabled = Object.keys(errText).length || !input.name // para que se pueda
 
 
                 <div>
-                  <label id="fontBodyCreate" className={"block-create-" + clase}>Genres:{errText.genres && <span  className='redspan'>》》 {errText.genres}</span>}     </label>
+                  <label id="fontBodyCreate" className={"block-create-" + clase}>Genres:</label>
                   <select
                     id="selectGenreCreate"
                     name="genres"
@@ -239,6 +239,7 @@ const disabled = Object.keys(errText).length || !input.name // para que se pueda
                       <span className="fontErrorsCreate">{errText.genres}</span>
                     )}
                   </div>
+                  {errText.genres && <span  className='redspan'>》》 {errText.genres}</span>}
                 </div>
               </div>
 
@@ -308,7 +309,7 @@ const disabled = Object.keys(errText).length || !input.name // para que se pueda
 
 
                 <div>
-                  <label id="fontBodyCreate" className={"block-create-" + clase}>Platforms:{errText.platforms && <span  className='redspan'>》》 {errText.platforms}</span>}   </label>
+                  <label id="fontBodyCreate" className={"block-create-" + clase}>Platforms:</label>
                   <select
                     className="selectPlatformCreate"
                     name="platforms"
@@ -393,7 +394,7 @@ const disabled = Object.keys(errText).length || !input.name // para que se pueda
                   )}
                   </div>
                   </div>
-                  
+                  {errText.platforms && <span  className='redspan'>》》 {errText.platforms}</span>} 
                 </div>
               </div>
             </div>

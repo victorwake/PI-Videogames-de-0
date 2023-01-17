@@ -67,43 +67,43 @@ export const SearchBar = () => {
 
 
     return (
-        <form onSubmit={handleSubmit}>
-            {/* <Filters /> */}
-            <div className={'conteiner-search-' + clase}>
-                
-                <div className={'conteiner-select-' + clase}>
-                
-                {/* <SetFilters />  */}
+            <form onSubmit={handleSubmit}>
+                {/* <Filters /> */}
+                <div className={'conteiner-search-' + clase}>
+                    
+                    <div className={'conteiner-select-' + clase}>
+                    
+                    {/* <SetFilters />  */}
+                    </div>
+                    {/* <div className={'conteiner-select-' + clase}>
+                    
+                    </div> */}
+                    <div>
+                        <div className={'form-search-' + clase}>	
+                            <input 
+                            id='input-search'
+                            className={'imput-search-' + clase} 
+                            type="text" 
+                            laceholder='Search Game'
+                            onChange={handleInputChange}
+                            value={input}
+                            maxLength= '30'
+                            disabled = {disabled}
+                            >
+                            </input>	
+                            {/* {disabled &&  */}
+                            <button 
+                            id='button-search' 
+                            className={'button-search-' + clase} 
+                            onClick={handleClick}
+                            >
+                            Search:
+                            </button>
+                            {/* } */}
+                            {!!button.length && !!gameByName.length && <span className="span">✓ your search: {button}</span>}
+                        </div>
+                    </div>
                 </div>
-                {/* <div className={'conteiner-select-' + clase}>
-                
-                </div> */}
-                <div>
-	                <form className={'form-search-' + clase}>	
-		                <input 
-                        id='input-search'
-                        className={'imput-search-' + clase} 
-                        type="text" 
-                        laceholder='Search Game'
-                        onChange={handleInputChange}
-                        value={input}
-                        maxLength= '30'
-                        disabled = {disabled}
-                        >
-                        </input>	
-                        {/* {disabled &&  */}
-		                <button 
-                        id='button-search' 
-                        className={'button-search-' + clase} 
-                        onClick={handleClick}
-                        >
-                        Search:
-                        </button>
-                        {/* } */}
-                        {!!button.length && !!gameByName.length && <span className="span">✓ your search: {button}</span>}
-	                </form>
-                </div>
-            </div>
-        </form>
+            </form>
     )
 }

@@ -47,35 +47,15 @@ export const CreateGame = () => {
     }));
   }
 
-
-  // const handleCheck = (e) => {
-  //   const value = e.target.value
-  //   if (!input[e.target.name].includes(value)) {
-  //     setInput({
-  //       ...input,
-  //       [e.target.name]: [...input[e.target.name], value]
-  //     });
-  //     seterrText(formControl({
-  //       ...input,
-  //       [e.target.name]: [...input[e.target.name], value]
-  //     }));
-  //   } else {
-  //     setInput({
-  //       ...input,
-  //       [e.target.name]: input[e.target.name].filter(n => n !== value)
-  //     });
-  //     seterrText(formControl({
-  //       ...input,
-  //       [e.target.name]: input[e.target.name].filter(n => n !== value)
-  //     }));
-  //   }    
-  // };
-
   const handleSelectGenre = (e) => {
     setInput({
       ...input,
       genres: [...input.genres, e.target.value],
     });
+    seterrText(formControl({
+      ...input,
+      genres: [...input.genres, e.target.value],
+    }));
   };
 
   const handleSelectPlatform = (e) => {
@@ -83,33 +63,33 @@ export const CreateGame = () => {
       ...input,
       platforms: [...input.platforms, e.target.value],
     });
-  };
-
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    if(!input.img.length) input.img = imgDefault
-    postGame(input);
-    dispatch(cleanAllFilters());
-    dispatch(getGames());
-    navigate("/setgame"); // es el remplazo de useHistory en react 6
-
-    //const disabled = Object.keys(errText).length || !input.name // para que se pueda mandar tiene que ser false
+    seterrText(formControl({
+      ...input,
+      platforms: [...input.platforms, e.target.value],
+    }));
+    
   };
 
 const deleteChoice = (category, value) => {
   const newValues = input[category].filter((e) => e !== value);
   setInput({
     ...input,
-    [category]: newValues,
-  });
+    [category]: newValues
+  })
+  seterrText(formControl({
+    ...input,
+    [category]: newValues
+  }));
 };
 
-
-
-
-
-
+const handleSubmit = e => {
+  e.preventDefault();
+  if(!input.img.length) input.img = imgDefault
+  postGame(input);
+  dispatch(cleanAllFilters());
+  dispatch(getGames());
+  navigate("/SetGame"); // es el remplazo de useHistory en react 6
+};
 
 
 const disabled = Object.keys(errText).length || !input.name // para que se pueda mandar tiene que ser false
@@ -137,13 +117,13 @@ const disabled = Object.keys(errText).length || !input.name // para que se pueda
 
 
 
-            <div class="containerCreateBody">
-              <div class="columnsForm">
+            <div className="containerCreateBody">
+              <div className="columnsForm">
                 <div>
                   <label id="fontBodyCreate" className={"block-create-" + clase}>Name:</label>
                   <input
                     className={"inputName-" + clase}
-                    autocomplete="off"
+                    autoComplete="off"
                     type="text"
                     maxLength="30"
                     name='name' value={input.name}
@@ -160,13 +140,13 @@ const disabled = Object.keys(errText).length || !input.name // para que se pueda
                   <label id="fontBodyCreate" className={"block-create-" + clase}>Description:</label>
                   <textarea
                     className={"inputDescription-" + clase}
-                    autocomplete="off"
+                    autoComplete="off"
                     type="text"
                     maxLength="500"
                     name='description' value={input.description} 
                     onChange={handleChange}
                   ></textarea>
-                  {errText.description && <span  className='redspan'>》》 {errText.description}</span>}
+                  {errText.description && <span  className='fontErrorsCreate'>》》 {errText.description}</span>}
                 </div>
                 <br />
 
@@ -290,7 +270,7 @@ const disabled = Object.keys(errText).length || !input.name // para que se pueda
                   <label id="fontBodyCreate" className={"block-create-" + clase}>Rating:</label>
                   <input
                     className={"inputRating-" + clase}
-                    autocomplete="off"
+                    autoComplete="off"
                     type="number"
                     step="0.1"
                     min="0"
@@ -309,7 +289,7 @@ const disabled = Object.keys(errText).length || !input.name // para que se pueda
                   <label id="fontBodyCreate" className={"block-create-" + clase}>Image URL:</label>
                   <input
                     className={"inputImgURL-" + clase}
-                    autocomplete="off"
+                    autoComplete="off"
                     type="text"
                     placeholder= 'url...'
                     name='img' value={ input.img }
@@ -332,7 +312,6 @@ const disabled = Object.keys(errText).length || !input.name // para que se pueda
                   <select
                     className="selectPlatformCreate"
                     name="platforms"
-                    // multiple={true}
                     value={input.platforms}
                     onChange={(e) => handleSelectPlatform(e)}
                   >
@@ -379,7 +358,7 @@ const disabled = Object.keys(errText).length || !input.name // para que se pueda
                                 <button
                                   type="button"
                                   className={"button-delete-db-" + clase}
-                                  onClick={() => deleteChoice("genres", platform)}
+                                  onClick={() => deleteChoice("platforms", platform)}
                                 >
                                   X
                                 </button>
@@ -400,7 +379,7 @@ const disabled = Object.keys(errText).length || !input.name // para que se pueda
                                 <button
                                   type="button"
                                   className={"button-delete-db-" + clase}
-                                  onClick={() => deleteChoice("genres", platform)}
+                                  onClick={() => deleteChoice("platforms", platform)}
                                 >
                                   X
                                 </button>

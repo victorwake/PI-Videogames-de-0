@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { changeGenresFilter, changeTypeFilter, changeNameOrder, changeRatingOrder, resetPage, changePlatformsFilter, changeUseFilter, getReleased } from "../../redux/action";
+import { cleanAllFilters, changeGenresFilter, changeTypeFilter, changeNameOrder, changeRatingOrder, resetPage, changePlatformsFilter, changeUseFilter, getReleased } from "../../redux/action";
 import './filter.css'
 
 export const Filters = () => {
@@ -41,7 +41,6 @@ export const Filters = () => {
         e.preventDefault()
         dispatch(changeNameOrder(e.target.value));
         dispatch(changeRatingOrder(''));        
-        dispatch(resetPage(1));
         if(!useFilter) dispatch(changeUseFilter(true));
     };
 
@@ -49,19 +48,22 @@ export const Filters = () => {
         e.preventDefault()
         dispatch(changeRatingOrder(e.target.value));
         dispatch(changeNameOrder(''));            
-        dispatch(resetPage(1));
         if(!useFilter) dispatch(changeUseFilter(true)); 
     };
 
     const handleReleasedOrder = e => {
         e.preventDefault()
         dispatch(getReleased(e.target.value))
-        // dispatch(resetPage(1));
     }
 
+    const handleResetFilters = e => {
+        dispatch(cleanAllFilters())
+    }
     return (
         <div className={"filter-container-" + clase}>
+
             <div className={"filter-box-" + clase}>
+                
                 <h5 className="h5">❱❱❱ filter by:</h5>
                 <select value= {genresFilter} onChange={handleGenreFilter} className={"select-filter-" + clase}>S
                     <option value= '' disabled>Genre</option>
@@ -90,7 +92,7 @@ export const Filters = () => {
 
             </div>
 
-
+            <button className={"button-" + clase} onClick={handleResetFilters}>RESET</button>
 
             <div className={"filter-box-" + clase}>
 
@@ -105,7 +107,7 @@ export const Filters = () => {
                     <option value= 'best rating'>Best Rating</option>
                     <option value= 'worst rating'>Worst Rating</option>
                 </select>
-                
+                                
                 <select value= {released} onChange={handleReleasedOrder} className={"select-filter-" + clase}>
                     <option value= '' disabled>Released</option>
                     <option value= 'best released'>Best Released</option>

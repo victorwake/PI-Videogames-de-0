@@ -123,11 +123,11 @@ export const rootReducer = (state = initialState, action) => {
             ...state,
             ratingOrder: action.payload
             }
-            case CURRENT_PAGE:
-                return {
-                ...state,
-                currentPage: action.payload
-            }    
+        case CURRENT_PAGE:
+            return {
+            ...state,
+            currentPage: action.payload
+        }    
         ///////////////////////////////    
         case CLEAN_ALL_FILTERS:
             return {

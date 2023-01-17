@@ -1,5 +1,5 @@
 import './home.css'
-import  React, { Fragment } from 'react';
+import  React, { Fragment, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getGames, getGenres, getPlatforms} from '../../redux/action/';
 import { Link } from 'react-router-dom';
@@ -34,14 +34,14 @@ export const Home = () => {
     const released = useSelector(state => state.released)
 
 
-    // defino qué renderizar seún los filtros
+    // defino qué renderizar según los filtros
     let games = []  
     searchGame && !gameByName.msg ? games = [...gameByName] : games = [...allGames];
 
     if(typeFilter === 'created') games = games.filter(g => typeof g.id === 'string');
     if(typeFilter === 'existing') games = games.filter(g => typeof g.id === 'number');       
     if(nameOrder === 'asc' ) games.sort(nameASC);
-    if(nameOrder === 'desc') games.sort(nameDES);
+    if(nameOrder === 'desc') games.sort(nameDES);   
     if(ratingOrder === 'worst rating') games.sort(ratingWORST);          
     if(ratingOrder === 'best rating') games.sort(ratingBEST);
     
@@ -57,12 +57,12 @@ export const Home = () => {
     const indexFirstGame = indexLastGame - gamesPerPage;
     const currentGames = games.slice(indexFirstGame, indexLastGame);
 
-    // me traigo info del back en primer renderizado
-    if(!games.length && !genres.length && !platforms.length) {
-        dispatch(getGames());
-        dispatch(getGenres());
-        dispatch(getPlatforms());
-    }
+    // me traigo info del back si no tengo datos
+    useEffect(()=> {
+        if(!games.length) dispatch(getGames())
+        if(!genres.length) dispatch(getGenres())
+        if(!platforms.length) dispatch(getPlatforms())
+    },[]) // eslint-disable-line react-hooks/exhaustive-deps
 
     // defino loading
     let loading = false
@@ -83,6 +83,7 @@ export const Home = () => {
             <div>
                 <SearchBar />
                 <Filters />
+                
                 {/* { loading ? '' : games.length && !gameByName.msg &&
                 <span >✓ {games.length} results</span> } 
                 {/* <Filters />
@@ -108,6 +109,7 @@ export const Home = () => {
                                             name={game.name}
                                             img={game.img}
                                             genres={game.genres}
+                                            platforms={game.platforms}
                                         />
                                     </Link>
                         </Fragment>

@@ -17,7 +17,6 @@ export const Details = () => {
     const {id} = useParams();
     const dispatch = useDispatch();
     const detal = useSelector((state)=>state.details) 
-
     console.log(detal)
     useEffect(()=>{
         dispatch(getGameById(id))

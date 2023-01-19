@@ -1,5 +1,5 @@
 import './error.css'
-import React , { useCallback } from "react";
+import React from "react";
 import { useNavigate } from 'react-router-dom';
 import urlNotFount from '../../img/urlNoFount.gif'
 
@@ -11,13 +11,10 @@ import urlNotFount from '../../img/urlNoFount.gif'
 export const Error = () => {
     
     const navigate = useNavigate();
-    
-    const redirectToHome = useCallback(() => {
-        setTimeout(redirectToHome, 5000)
-        navigate('/home');
-    }, [navigate]);
 
-    redirectToHome();
+    setTimeout(() => {
+        navigate('/home');
+    }, 5000);
 
     return (
         <div className="noFonund" >

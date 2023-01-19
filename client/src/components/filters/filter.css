@@ -1,7 +1,7 @@
 
 .h5 {
     color: rgb(176, 78, 78);
-    font-size: 1rem;
+    font-size: 0.9rem;
     text-transform: uppercase;
     font-weight: 700;
     letter-spacing: 2px
@@ -164,6 +164,7 @@
 .button-dark:hover {
     background-color: rgba(176, 78, 78, 0.479);
 }
+
 /* Modo dark fin */
 
 

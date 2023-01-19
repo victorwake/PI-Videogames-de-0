@@ -6,7 +6,8 @@ import { getGameByName,
         changeRatingOrder, 
         changeTypeFilter, 
         changeSearchGame, 
-        cleanStateByName 
+        cleanStateByName,
+        cleanAllFilters
 }  from "../../redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
@@ -61,6 +62,10 @@ export const SearchBar = () => {
         cleanFilters()
     }
 
+    const handleResetFilters = e => {
+        dispatch(cleanAllFilters())
+    }
+
     let disabled = false
     if(!!gameByName.length && searchGame) disabled = true
 
@@ -72,6 +77,9 @@ export const SearchBar = () => {
                 <div className={'conteiner-search-' + clase}>
                     
                     <div className={'conteiner-select-' + clase}>
+                    <div className={"filter-box-" + clase}>
+            
+            </div>
                     
                     {/* <SetFilters />  */}
                     </div>
@@ -101,7 +109,10 @@ export const SearchBar = () => {
                             </button>
                             {/* } */}
                             {!!button.length && !!gameByName.length && <span className="span">✓ your search: {button}</span>}
+                            
                         </div>
+                        <h5 className={'h5-search-' + clase}>❱❱❱ Reset search and filter:</h5>
+                            <button className={"button-reset-" + clase} onClick={handleResetFilters}>Reset</button>
                     </div>
                 </div>
             </form>

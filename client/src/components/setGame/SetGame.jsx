@@ -1,4 +1,4 @@
-import React , { useCallback } from "react";
+import React from "react";
 import { Nav } from '../nav/Nav';
 import './setGame.css';
 import { useNavigate } from 'react-router-dom';
@@ -10,12 +10,9 @@ export const SetGame = () => {
 
     const navigate = useNavigate();
     
-    const redirectToHome = useCallback(() => {
-        setTimeout(redirectToHome, 5000)
+    setTimeout(() => {
         navigate('/home');
-    }, [navigate]);
-
-    redirectToHome();
+    }, 5000);
 
 
     return (

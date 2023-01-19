@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { cleanAllFilters, changeGenresFilter, changeTypeFilter, changeNameOrder, changeRatingOrder, resetPage, changePlatformsFilter, changeUseFilter, getReleased } from "../../redux/action";
+import { changeGenresFilter, changeTypeFilter, changeNameOrder, changeRatingOrder, resetPage, changePlatformsFilter, changeUseFilter, getReleased } from "../../redux/action";
 import './filter.css'
 
 export const Filters = () => {
@@ -56,15 +56,15 @@ export const Filters = () => {
         dispatch(getReleased(e.target.value))
     }
 
-    const handleResetFilters = e => {
-        dispatch(cleanAllFilters())
-    }
+    // const handleResetFilters = e => {
+    //     dispatch(cleanAllFilters())
+    // }
     return (
         <div className={"filter-container-" + clase}>
 
             <div className={"filter-box-" + clase}>
                 
-                <h5 className="h5">❱❱❱ filter by:</h5>
+                <h5 className={'h5-' + clase}>❱❱❱ filter by:</h5>
                 <select value= {genresFilter} onChange={handleGenreFilter} className={"select-filter-" + clase}>S
                     <option value= '' disabled>Genre</option>
                     <option value='all'>All Genres</option>
@@ -91,12 +91,13 @@ export const Filters = () => {
                 </select>
 
             </div>
-
-            <button className={"button-" + clase} onClick={handleResetFilters}>RESET</button>
-
+            {/* <div className={"filter-box-" + clase}>
+            <h5 className="h5">❱❱❱ Reset search and filter:</h5>
+            <button className={"button-reset-" + clase} onClick={handleResetFilters}>Reset</button>
+            </div> */}
             <div className={"filter-box-" + clase}>
 
-                <h5 className="h5">❱❱❱ order by:</h5>
+                <h5 className={'h5-' + clase}>❱❱❱ order by:</h5>
                 <select value= {nameOrder} onChange={handleNameOrder} className={"select-filter-" + clase}>
                     <option value= '' disabled>Name</option>
                     <option value= 'asc'>A - Z</option>
@@ -113,6 +114,7 @@ export const Filters = () => {
                     <option value= 'best released'>Best Released</option>
                     <option value= 'worst released'>Worst Released</option>
                 </select>
+                
                 
             </div>
         </div>

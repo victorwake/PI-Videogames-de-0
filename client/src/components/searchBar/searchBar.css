@@ -14,7 +14,7 @@
     justify-content: center;
     align-items: center;
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     margin-right: 30px;
 	display: inline-block;
 	position: relative;
@@ -88,10 +88,42 @@
 }
 
 .h5-light{
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
 	transition-duration: 01s;
 	color: #333333;
-	margin-bottom: 4px;
 }
+
+.h5-search-light{
+	font-size: 0.9rem;
+	text-transform: uppercase;
+	font-weight: 700;
+	letter-spacing: 2px;
+	margin-left: -20px;
+	transition-duration: 01s;
+	color: #333333;
+}
+
+.button-reset-light{
+	cursor: pointer;
+    width: 60px;
+    height: 25px;
+	border-radius: 5px;
+	margin-top: 5px;
+	transition-duration: 01s;
+	background-color: rgb(255, 255, 255);
+	color: #333333;
+	box-shadow: -3px -2px 10px rgb(0, 0, 0), 3px 2px 10px rgba(255, 255, 255, 0.247);
+  }
+  
+  .button-reset-light:hover{
+	transition-duration: 01s;
+	background-color: rgb(255, 255, 255);
+	color: #333333;
+	box-shadow: -3px -2px 10px rgb(0, 0, 0), 3px 2px 10px rgba(255, 255, 255, 0.247);
+  }
 
 /* Modo light fin */
 
@@ -115,7 +147,7 @@
     align-items: center;
 	margin-right: 30px;
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
 	display: inline-block;
 	position: relative;
 	z-index: 1;
@@ -188,10 +220,43 @@
 }
 
 .h5-dark{
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
 	transition-duration: 01s;
-	color: rgb(224, 224, 224);
-	margin-bottom: 4px;
+	color: rgb(176, 78, 78);
 }
+
+.h5-search-dark{
+    font-size: 0.9rem;
+	text-transform: uppercase;
+	font-weight: 700;
+	letter-spacing: 2px;
+	margin-left: -20px;
+	transition-duration: 01s;
+	color: rgb(176, 78, 78);
+}
+
+.button-reset-dark{
+	cursor: pointer;
+    width: 60px;
+    height: 25px;
+    border-radius: 5px;
+    margin-top: 5px;
+    transition-duration: 01s;
+    background-color: #333333;
+    color: rgb(255, 255, 255);
+    box-shadow: -3px -2px 10px rgb(0, 0, 0), 3px 2px 10px rgba(255, 255, 255, 0.247);
+  }
+  
+  .button-reset-dark:hover{
+    transition-duration: 01s;
+    background-color: #333333;
+    color: rgba(176, 78, 78, 0.479);
+    box-shadow: -3px -2px 5px rgba(255, 0, 0, 0.2), 3px 2px 5px rgba(253, 99, 99, 0.1);
+  }
+  
 
 /* Modo dark fin */
 

@@ -20,8 +20,7 @@ import {
         SEARCH_GAME, USE_FILTER, 
         CLEAN_ALL_FILTERS, 
         CLEAN_DETAIL, 
-        GAME_UPDATE, 
-        PI 
+        RELEASED 
 } from '../action/index.js';
 
 const initialState = {
@@ -157,12 +156,7 @@ export const rootReducer = (state = initialState, action) => {
                 ...state,
             gameDetail: action.payload
             }
-        case GAME_UPDATE:
-            return {
-                ...state,
-                gameUpdate: action.payload
-            }
-        case PI:
+        case RELEASED:
             return {
                 ...state,
                 released: action.payload

@@ -186,19 +186,10 @@ export const cleanGameDetail = payload => {
 export const CLEAN_DETAIL = 'CLEAN_DETAIL';
 /*----------------------------------------------*/
 
-export const gameUpdate = payload => {
-    return dispatch => {
-        dispatch({ type: GAME_UPDATE, payload })
-    }
-};
-export const GAME_UPDATE = 'GAME_UPDATE';
-/*----------------------------------------------*/
-
 export const getReleased = payload => {
     return dispatch => {
-        dispatch({ type: PI, payload })
+        dispatch({ type: RELEASED, payload })
     }
 }
-export const PI = 'PI';
-
 /*----------------------------------------------*/
+export const RELEASED = 'RELEASED';

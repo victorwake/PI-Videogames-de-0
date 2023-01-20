@@ -47,7 +47,7 @@ export const About = () => {
 
         </div>  
                 <div className="footer-about">
-                    <Footer />
+
                 </div>
         </div>
         </div>

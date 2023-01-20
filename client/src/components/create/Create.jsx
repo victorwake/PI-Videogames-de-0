@@ -2,7 +2,7 @@ import "./create.css";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPlatforms, cleanAllFilters, getGenres, getGames } from "../../redux/action";
-import { Footer } from "../footer/Footer";
+// import { Footer } from "../footer/Footer";
 import { Nav } from "../nav/Nav";
 import { useNavigate } from "react-router-dom";// es el remplazo de useHistory en react 6
 import imgDefault from "../../img/default.jpg";
@@ -235,11 +235,11 @@ const disabled = Object.keys(errText).length || !input.name // para que se pueda
                           return <div></div>;
                         })}
                     </div>
-                    {errText.genres && (
-                      <span className="fontErrorsCreate">{errText.genres}</span>
-                    )}
+                    
                   </div>
-                  {errText.genres && <span  className='redspan'>》》 {errText.genres}</span>}
+                  {errText.genres && (
+                      <span className="fontErrorsCreate"> 》》 {errText.genres}</span>
+                    )}
                 </div>
               </div>
 
@@ -389,12 +389,12 @@ const disabled = Object.keys(errText).length || !input.name // para que se pueda
                           return <div></div>;
                         })}
                     </div>
-                    {errText.platforms && (
-                    <span className="fontErrorsCreate">{errText.platforms}</span>
+
+                  </div>
+                  </div>
+                  {errText.platforms && (
+                    <span className="fontErrorsCreate">》》 {errText.platforms}</span>
                   )}
-                  </div>
-                  </div>
-                  {errText.platforms && <span  className='redspan'>》》 {errText.platforms}</span>} 
                 </div>
               </div>
             </div>
@@ -420,7 +420,6 @@ const disabled = Object.keys(errText).length || !input.name // para que se pueda
 
 
     <div class="footer-create">
-    <Footer />
     </div>
     </div>
   );

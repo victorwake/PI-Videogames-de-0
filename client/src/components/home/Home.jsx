@@ -83,11 +83,6 @@ export const Home = () => {
             <div>
                 <SearchBar />
                 <Filters />
-                
-                {/* { loading ? '' : games.length && !gameByName.msg &&
-                <span >✓ {games.length} results</span> } 
-                {/* <Filters />
-                <SetFilters />    */}
             </div>
 
                 <div className={"pagination-container-" + clase} >

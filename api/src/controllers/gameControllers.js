@@ -112,42 +112,9 @@ const deleteGame = async (req, res, next) => {
 ---------------------------------------------------------------------------------------------------------
 */
 
-/*Update de un juego en la DB*/
-
-const putGame = async (req, res, next) => {
-
-    const {id} = req.params
-    let {name, img, description, released, rating, genres, platforms} = req.body
-    let str = ''
-    description = str.concat('<p>' + description + '<p>')
-
-    try {
-        const game = await Videogame.findByPk(id)
-        await game.update({name, img, description, released, rating, platforms})
-        const gameGenre = await game.getGenres()
-        await game.removeGenres(gameGenre)
-        let arrPromises = genres.map(e => (
-            Genre.findOne({where: {name: e}})
-            .then(res => game.addGenre(res))
-        ))
-        await Promise.all(arrPromises)
-        res.status(201).send("Videogame updated correctly");
-    } catch (error) {
-        next(error)
-    }
-};
-
-/*Fin de update de un juego en la DB*/
-
-/*
----------------------------------------------------------------------------------------------------------
-*/
-
-
 
 module.exports = { 
     postGame,
     getGameID,
-    putGame,
     deleteGame
     };

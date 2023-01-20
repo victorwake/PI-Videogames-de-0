@@ -74,7 +74,9 @@ export const GameDetail = () => {
 
                     <div className={'card-details-' + clase}>
                     <ul>
-                    <button className={'button-back-' + clase}><Link style={{color: 'inherit',  textDecoration: 'inherit'}} to="/home">Back</Link></button>
+                    <Link style={{color: 'inherit',  textDecoration: 'inherit'}} to="/home">
+                        <button className={'button-back-' + clase}>Back</button>
+                    </Link>
                     </ul>
                         <h1 className={'h1-details-' + clase}>{gameDetail?.name}</h1>
                         <img className={'image-details-' + clase} src={gameDetail?.img} alt={gameDetail?.name} />

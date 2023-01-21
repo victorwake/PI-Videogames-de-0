@@ -66,10 +66,15 @@ export const GET_PLATFORMS = 'GET_PLATFORMS';
 
 //Traigo los juegos por nombre
 export const getGameByName = name => {
-    return dispatch => axios(`http://localhost:3001/games?name=${name}`)
-    .then(res => dispatch({ type: GET_GAME_BY_NAME, payload: res.data}))
+    return dispatch => {
+    axios(`http://localhost:3001/games?name=${name}`)
+    .then(res => {
+    dispatch({ type: GET_GAME_BY_NAME, payload: res.data});
+    dispatch(changeCurrentPage(1)); // actualiza el currentPage a 1
+    })
     .catch(err => console.log(err));
-};
+    }
+    };
 export const GET_GAME_BY_NAME= 'GET_GAME_BY_NAME';
 /*----------------------------------------------*/
 

@@ -80,7 +80,7 @@ export const GET_GAME_BY_NAME= 'GET_GAME_BY_NAME';
 
 //Traigo los juegos por id
 export const getGameDetail = id => {
-    return dispatch => axios(`https://henry-games.onrender.com/game/${id}`)
+    return dispatch => axios(`http://localhost:3001/game/${id}`)
     .then(res => dispatch({ type: GET_GAME_DETAIL, payload: res.data}))
     .catch(err => console.log(err));
 };

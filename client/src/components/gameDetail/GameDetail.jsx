@@ -10,7 +10,7 @@ import { Loading } from '../loading/Loading';
 import { deleteGame } from '../../helpers/deleteGame';
 import { Nav } from '../nav/Nav';
 import { useParams } from "react-router-dom";
-// import { Footer } from '../footer/Footer';
+import { Footer } from '../footer/Footer';
 
 
 
@@ -132,7 +132,7 @@ export const GameDetail = () => {
 
                     </div>
                         <div className='footer-details'>
-                            {/* <Footer /> */}
+                            { <Footer />} 
                         </div>
                 </div>
                 

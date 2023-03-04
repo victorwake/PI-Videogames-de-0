@@ -65,7 +65,7 @@ const getGameID = async (req, res) => {
 Creo un nuevo juego en la DB
 */
 const postGame = async (req, res, next) => {//uso el next para poder manejar los errores en el middleware
-    const { name, description, released, rating, platforms, genres, img, costo } = req.body;
+    const { name, description, released, rating, platforms, genres, img } = req.body;
     try {  
             const newGame = await Videogame.create({
             name, 
@@ -74,7 +74,6 @@ const postGame = async (req, res, next) => {//uso el next para poder manejar los
             rating, 
             platforms, 
             img,
-            costo,
     });
     let genreDb = await Genre.findAll({
         where: {

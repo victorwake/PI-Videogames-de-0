@@ -47,10 +47,6 @@ module.exports = (sequelize) => {
       type: DataTypes.BOOLEAN,
       defaultValue: true
     },
-    costo:{
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
 
     img: {
       type: DataTypes.TEXT,

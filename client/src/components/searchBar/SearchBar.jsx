@@ -92,7 +92,7 @@ export const SearchBar = () => {
                             id='input-search'
                             className={'imput-search-' + clase} 
                             type="text" 
-                            laceholder='Search Game'
+                            placeholder='Search Game'
                             onChange={handleInputChange}
                             value={input}
                             maxLength= '30'

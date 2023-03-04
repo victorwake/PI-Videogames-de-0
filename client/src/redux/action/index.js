@@ -37,7 +37,7 @@ export const THEME_DARK = 'THEME_DARK';
 
 //Traigo todos los juegos 
 export const getGames = () => {
-    return dispatch => axios('http://localhost:3001/games')
+    return dispatch => axios('https://henry-games.onrender.com/games')
     .then(res => dispatch({ type: GET_GAMES, payload: res.data }))
     .catch(err => console.log(err));
 };
@@ -47,7 +47,7 @@ export const GET_GAMES = 'GET_GAMES';
 
 //Traigo los generos
 export const getGenres = () => {
-    return dispatch => axios('http://localhost:3001/genres')
+    return dispatch => axios('https://henry-games.onrender.com/genres')
     .then(res => dispatch({ type: GET_GENRES, payload: res.data}))
     .catch(err => console.log(err));  
 };
@@ -57,7 +57,7 @@ export const GET_GENRES = 'GET_GENRES';
 
 //Traigo las plataformas
 export const getPlatforms = () => {
-    return dispatch => axios('http://localhost:3001/platforms')
+    return dispatch => axios('https://henry-games.onrender.com/platforms')
     .then(res => dispatch({ type: GET_PLATFORMS, payload: res.data}))
     .catch(err => console.log(err));  
 };
@@ -67,7 +67,7 @@ export const GET_PLATFORMS = 'GET_PLATFORMS';
 //Traigo los juegos por nombre
 export const getGameByName = name => {
     return dispatch => {
-    axios(`http://localhost:3001/games?name=${name}`)
+    axios(`https://henry-games.onrender.com/games?name=${name}`)
     .then(res => {
     dispatch({ type: GET_GAME_BY_NAME, payload: res.data});
     dispatch(changeCurrentPage(1)); // actualiza el currentPage a 1
@@ -80,7 +80,7 @@ export const GET_GAME_BY_NAME= 'GET_GAME_BY_NAME';
 
 //Traigo los juegos por id
 export const getGameDetail = id => {
-    return dispatch => axios(`http://localhost:3001/game/${id}`)
+    return dispatch => axios(`https://henry-games.onrender.com/game/${id}`)
     .then(res => dispatch({ type: GET_GAME_DETAIL, payload: res.data}))
     .catch(err => console.log(err));
 };

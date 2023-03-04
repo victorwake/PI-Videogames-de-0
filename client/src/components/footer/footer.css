@@ -5,11 +5,10 @@
     transition-duration: 01s;
     background-color: rgb(224, 224, 224);
     color: #333333;
-    position: absolute;
 
 }
 
-.conteiner-footer-dark {
+.conteiner-footer-light {
     display: flex;
     justify-content: center;
 }

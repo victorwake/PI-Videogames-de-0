@@ -15,6 +15,13 @@
   margin-top: 400px;
 }
 
+@media screen and (max-width: 768px) {
+  .container-loading{
+    margin-top: 60%;
+  }
+}
+  
+
 
 
 

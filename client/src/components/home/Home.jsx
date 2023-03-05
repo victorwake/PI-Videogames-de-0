@@ -74,6 +74,7 @@ export const Home = () => {
     if(searchGame && gameByName.msg) notFound = true;
     if(!games.length && useFilter) notFound = true;
     
+    
 
 
     return (

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { Card } from '../card/Card.jsx';
 import { Pagination } from '../pagination/Pagination';
 import { NotFound } from '../notFound/NotFound'
-// import { Footer } from '../footer/Footer';
+import { Footer } from '../footer/Footer';
 import { SearchBar } from '../searchBar/SearchBar';
 import { Nav } from '../nav/Nav';
 import { Loading } from '../loading/Loading';
@@ -73,6 +73,10 @@ export const Home = () => {
     let notFound = false;
     if(searchGame && gameByName.msg) notFound = true;
     if(!games.length && useFilter) notFound = true;
+    // if(searchGame && gameByName.length === 0){
+    //     notFound = true;
+    //     loading = false;
+    // }
     
     
 
@@ -121,7 +125,7 @@ export const Home = () => {
                 { !gameByName.msg && <Pagination games = {games.length} gamesPerPage = {gamesPerPage} />}
                 </div>
                 <div className={"footer-home-" + clase}>
-                {/* <Footer /> */}
+                <Footer />
                 </div>
         </div>
     )

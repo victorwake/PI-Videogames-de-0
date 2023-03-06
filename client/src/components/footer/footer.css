@@ -39,14 +39,15 @@
     
 }
 
-/* .footer-image-dark {
-
-
+.footer-redes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px;
 }
 
-.conteiner-span-dark {
-    
-
-} */
-
-/* Modo dark fin */
+.logos-redes{
+    width: 30px;
+    height: 30px;
+    margin: 0 10px;
+}

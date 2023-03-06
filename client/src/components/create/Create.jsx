@@ -2,7 +2,7 @@ import "./create.css";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPlatforms, cleanAllFilters, getGenres, getGames } from "../../redux/action";
-// import { Footer } from "../footer/Footer";
+import { Footer } from "../footer/Footer";
 import { Nav } from "../nav/Nav";
 import { useNavigate } from "react-router-dom";// es el remplazo de useHistory en react 6
 import imgDefault from "../../img/default.jpg";
@@ -420,6 +420,7 @@ const disabled = Object.keys(errText).length || !input.name // para que se pueda
 
 
     <div class="footer-create">
+      < Footer />
     </div>
     </div>
   );

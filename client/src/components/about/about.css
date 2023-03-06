@@ -46,8 +46,8 @@
   }
   
   .conteiner-span-light {
-    height: 50%;
-    width: 50%;
+    height: 80%;
+    width: 80%;
     margin-top: 20px;
     margin-bottom: 20px;
     font-size: 1rem;
@@ -133,3 +133,29 @@
   }
   
   /* Modo dark fin */
+
+  @media screen and (max-width: 768px){
+
+
+    
+    .conteiner-about-light {
+      height: 730px;
+      width: 380px;
+    }
+    
+
+    .conteiner-span-light {
+      height: 80%;
+      width: 80%;
+    }
+
+    .conteiner-about-dark {
+      height: 730px;
+      width: 380px;
+    }
+
+    .conteiner-span-dark {
+      height: 80%;
+      width: 80%;
+    }
+  }

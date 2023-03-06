@@ -1,6 +1,6 @@
 import './about.css';
 import { useSelector } from "react-redux";
-// import { Footer } from '../footer/Footer';
+import { Footer } from '../footer/Footer';
 import { Nav } from '../nav/Nav';
 
 
@@ -47,7 +47,7 @@ export const About = () => {
 
         </div>  
                 <div className="footer-about">
-
+                    <Footer />
                 </div>
         </div>
         </div>

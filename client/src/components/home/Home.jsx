@@ -73,12 +73,9 @@ export const Home = () => {
     let notFound = false;
     if(searchGame && gameByName.msg) notFound = true;
     if(!games.length && useFilter) notFound = true;
-    // if(searchGame && gameByName.length === 0){
-    //     notFound = true;
-    //     loading = false;
-    // }
-    
-    
+
+
+
 
 
     return (

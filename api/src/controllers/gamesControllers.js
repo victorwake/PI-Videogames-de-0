@@ -81,19 +81,18 @@ const getAllGames = async (req, res, next) => {
                         platforms: e.platforms.map(p => p.platform.name)
                     }
             });
-            let getGameByName = getDbByName.concat(getApiByName);
+            let getDbByName = db.filter(e => e.name.toUpperCase().includes(name.toUpperCase()))
+            let getGameByName = getDbByName.concat(getApiByName)
             if (getGameByName.length === 0) {
-                res.status(404).send({
-                error: err.message,
-            });
+                throw new Error("No se encontraron resultados");
             } else {
                 res.send(getGameByName);
             }
         } else {
             res.send(allInfo);
         }
-        } catch (err) {
-            res.send({ msg: 'not found' });
+    } catch (err) {
+        res.status(404).send({ error: err.message });
     }
 };
 
